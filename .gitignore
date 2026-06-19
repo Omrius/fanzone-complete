@@ -1,8 +1,6 @@
 node_modules
 .env
 dist
-
-# Local Netlify folder
 .netlify
-
+netlify.toml
 .vercel
