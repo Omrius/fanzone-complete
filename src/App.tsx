@@ -4,6 +4,9 @@ import { ThemeProvider } from './contexts/ThemeContext'
 import Layout from './components/Layout'
 import Home from './pages/Home'
 import Explore from './pages/Explore'
+import Events from './pages/Events'
+import EventDetail from './pages/EventDetail'
+import CreateEvent from './pages/CreateEvent'
 import CreatorProfile from './pages/CreatorProfile'
 import Dashboard from './pages/Dashboard'
 import Auth from './pages/Auth'
@@ -17,6 +20,9 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/explore" element={<Explore />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/event/:id" element={<EventDetail />} />
+            <Route path="/create-event" element={<CreateEvent />} />
             <Route path="/creator/:id" element={<CreatorProfile />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/auth" element={<Auth />} />

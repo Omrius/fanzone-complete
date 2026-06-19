@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
-import { Home, Compass, User, LayoutDashboard, LogOut, LogIn, Menu, X, Zap } from 'lucide-react'
+import { Home, Compass, Calendar, User, LayoutDashboard, LogOut, LogIn, Menu, X, Zap } from 'lucide-react'
 
 export default function Navbar() {
   const { user, isAuthenticated, signOut } = useAuth()
@@ -10,6 +10,7 @@ export default function Navbar() {
 
   const navLinks = [
     { to: '/', icon: Home, label: 'Accueil' },
+    { to: '/events', icon: Calendar, label: 'Evenements' },
     { to: '/explore', icon: Compass, label: 'Explorer' },
   ]
 
