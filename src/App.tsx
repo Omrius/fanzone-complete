@@ -1,0 +1,31 @@
+import { Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './contexts/AuthContext'
+import { ThemeProvider } from './contexts/ThemeContext'
+import Layout from './components/Layout'
+import Home from './pages/Home'
+import Explore from './pages/Explore'
+import CreatorProfile from './pages/CreatorProfile'
+import Dashboard from './pages/Dashboard'
+import Auth from './pages/Auth'
+import Settings from './pages/Settings'
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AuthProvider>
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/explore" element={<Explore />} />
+            <Route path="/creator/:id" element={<CreatorProfile />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/auth" element={<Auth />} />
+            <Route path="/settings" element={<Settings />} />
+          </Routes>
+        </Layout>
+      </AuthProvider>
+    </ThemeProvider>
+  )
+}
+
+export default App
