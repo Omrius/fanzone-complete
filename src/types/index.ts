@@ -5,6 +5,7 @@ export interface User {
   avatar_url?: string
   bio?: string
   role: 'fan' | 'creator'
+  stripe_onboarding_complete?: boolean
   created_at: string
 }
 

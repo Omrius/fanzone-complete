@@ -1,6 +1,6 @@
 import { loadStripe } from '@stripe/stripe-js'
 
-const stripePublishableKey = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY
+const stripePublishableKey = (import.meta as any).env.VITE_STRIPE_PUBLISHABLE_KEY
 export const stripePromise = loadStripe(stripePublishableKey)
 
 export const PLATFORM_FEE_PERCENT = 0.15

@@ -26,7 +26,7 @@ export default function Dashboard() {
     finally { setIsLoading(false) }
   }
 
-  if (authLoading) return <div className="flex items-center justify-center min-h-screen">Chargement...</div>
+  if (authLoading || isLoading) return <div className="flex items-center justify-center min-h-screen">Chargement...</div>
   if (!isAuthenticated) return <Navigate to="/auth" />
   if (user?.role !== 'creator') return <Navigate to="/" />
 
@@ -83,7 +83,7 @@ export default function Dashboard() {
         <div className="space-y-6">
           <div className="glass-card p-6">
             <h2 className="text-lg font-semibold mb-4">Paiements Stripe</h2>
-            {user?.stripe_onboarding_complete ? (
+            {(user as any)?.stripe_onboarding_complete ? (
               <div className="flex items-center gap-3 p-4 bg-green-400/10 rounded-xl border border-green-400/20">
                 <div className="w-3 h-3 rounded-full bg-green-400" />
                 <div><p className="text-sm font-medium text-green-400">Connecte</p><p className="text-xs text-gray-400">Vous pouvez recevoir des paiements</p></div>
