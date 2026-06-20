@@ -5,41 +5,78 @@ import Footer from './Footer'
 export default function Layout({ children }: { children?: React.ReactNode }) {
   return (
     <div className="min-h-screen relative">
-      {/* MASSIVE visible floating orbs — no subtlety */}
+      {/* Animated background orbs — inline styles for guaranteed rendering */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Giant red orb top-left */}
-        <div 
-          className="absolute -top-32 -left-32 w-[700px] h-[700px] bg-gradient-to-br from-red-500 to-pink-600 rounded-full opacity-60 dark:opacity-50 blur-[120px] animate-pulse"
-          style={{ animationDuration: '6s' }}
+        {/* Red orb top-left */}
+        <div
+          className="absolute rounded-full animate-pulse"
+          style={{
+            top: '-150px', left: '-150px',
+            width: '700px', height: '700px',
+            background: 'radial-gradient(circle, rgba(239,68,68,0.8) 0%, rgba(236,72,153,0.6) 50%, transparent 70%)',
+            filter: 'blur(80px)',
+            animationDuration: '6s',
+          }}
         />
-        {/* Giant purple orb top-right */}
-        <div 
-          className="absolute -top-20 -right-20 w-[800px] h-[800px] bg-gradient-to-br from-purple-600 to-indigo-600 rounded-full opacity-50 dark:opacity-40 blur-[120px] animate-pulse"
-          style={{ animationDuration: '8s', animationDelay: '1s' }}
+        {/* Purple orb top-right */}
+        <div
+          className="absolute rounded-full animate-pulse"
+          style={{
+            top: '-100px', right: '-100px',
+            width: '800px', height: '800px',
+            background: 'radial-gradient(circle, rgba(147,51,234,0.7) 0%, rgba(79,70,229,0.5) 50%, transparent 70%)',
+            filter: 'blur(80px)',
+            animationDuration: '8s',
+            animationDelay: '1s',
+          }}
         />
-        {/* Giant cyan orb bottom-left */}
-        <div 
-          className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full opacity-50 dark:opacity-40 blur-[120px] animate-pulse"
-          style={{ animationDuration: '10s', animationDelay: '2s' }}
+        {/* Cyan orb bottom-left */}
+        <div
+          className="absolute rounded-full animate-pulse"
+          style={{
+            bottom: '-100px', left: '-50px',
+            width: '600px', height: '600px',
+            background: 'radial-gradient(circle, rgba(34,211,238,0.7) 0%, rgba(20,184,166,0.5) 50%, transparent 70%)',
+            filter: 'blur(80px)',
+            animationDuration: '10s',
+            animationDelay: '2s',
+          }}
         />
-        {/* Giant amber orb bottom-right */}
-        <div 
-          className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-amber-400 to-orange-500 rounded-full opacity-40 dark:opacity-30 blur-[120px] animate-pulse"
-          style={{ animationDuration: '7s', animationDelay: '3s' }}
+        {/* Amber orb bottom-right */}
+        <div
+          className="absolute rounded-full animate-pulse"
+          style={{
+            bottom: '-50px', right: '-50px',
+            width: '500px', height: '500px',
+            background: 'radial-gradient(circle, rgba(251,191,36,0.6) 0%, rgba(249,115,22,0.4) 50%, transparent 70%)',
+            filter: 'blur(80px)',
+            animationDuration: '7s',
+            animationDelay: '3s',
+          }}
         />
         {/* Center accent orb */}
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-fanzone-accent to-fanzone-purple rounded-full opacity-30 dark:opacity-25 blur-[100px] animate-pulse"
-          style={{ animationDuration: '5s', animationDelay: '0.5s' }}
+        <div
+          className="absolute rounded-full animate-pulse"
+          style={{
+            top: '50%', left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '400px', height: '400px',
+            background: 'radial-gradient(circle, rgba(255,71,87,0.5) 0%, rgba(108,92,231,0.3) 50%, transparent 70%)',
+            filter: 'blur(60px)',
+            animationDuration: '5s',
+            animationDelay: '0.5s',
+          }}
         />
-        {/* Floating dots */}
+        {/* Floating particles */}
         {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 rounded-full bg-white/80 dark:bg-white/60 animate-ping"
+            className="absolute rounded-full animate-ping"
             style={{
-              left: `${(i * 13 + 5) % 95}%`,
-              top: `${(i * 17 + 3) % 95}%`,
+              left: `${(i * 37 + 13) % 95}%`,
+              top: `${(i * 23 + 7) % 95}%`,
+              width: '3px', height: '3px',
+              backgroundColor: 'rgba(255,255,255,0.9)',
               animationDuration: `${2 + (i % 3)}s`,
               animationDelay: `${(i * 0.3) % 4}s`,
             }}
