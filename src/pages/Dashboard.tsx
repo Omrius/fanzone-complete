@@ -42,13 +42,13 @@ export default function Dashboard() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
-      <div className="mb-8"><h1 className="text-3xl font-bold mb-2">{t('dashboard.title')}</h1><p className="text-gray-400">{t('dashboard.subtitle')}</p></div>
+      <div className="mb-8"><h1 className="text-3xl font-bold mb-2">{t('dashboard.title')}</h1><p className="text-gray-600 dark:text-gray-400">{t('dashboard.subtitle')}</p></div>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {statCards.map((stat) => (
           <div key={stat.label} className="glass-card p-6">
             <div className="flex items-center justify-between mb-4"><stat.icon className={`w-8 h-8 ${stat.color}`} /><span className="text-xs text-gray-500 bg-white/10 px-2 py-1 rounded">+12%</span></div>
             <p className="text-2xl font-bold mb-1">{stat.value}</p>
-            <p className="text-sm text-gray-400">{stat.label}</p>
+            <p className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</p>
           </div>
         ))}
       </div>
@@ -57,7 +57,7 @@ export default function Dashboard() {
           <div className="glass-card p-6">
             <h2 className="text-lg font-semibold mb-4">{t('dashboard.quickActions')}</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {[{icon: BarChart3, label: t('dashboard.analytics'), color: 'text-fanzone-accent'}, {icon: CreditCard, label: t('dashboard.payments'), color: 'text-fanzone-purple'}, {icon: Wallet, label: t('dashboard.withdraw'), color: 'text-green-400'}, {icon: Settings, label: t('dashboard.settings'), color: 'text-gray-400'}].map((item) => (
+              {[{icon: BarChart3, label: t('dashboard.analytics'), color: 'text-fanzone-accent'}, {icon: CreditCard, label: t('dashboard.payments'), color: 'text-fanzone-purple'}, {icon: Wallet, label: t('dashboard.withdraw'), color: 'text-green-400'}, {icon: Settings, label: t('dashboard.settings'), color: 'text-gray-600 dark:text-gray-400'}].map((item) => (
                 <button key={item.label} className="p-4 rounded-xl bg-white/5 hover:bg-white/10 transition-all text-center">
                   <item.icon className={`w-6 h-6 mx-auto mb-2 ${item.color}`} /><span className="text-sm">{item.label}</span>
                 </button>
@@ -66,7 +66,7 @@ export default function Dashboard() {
           </div>
           <div className="glass-card p-6">
             <h2 className="text-lg font-semibold mb-4">{t('dashboard.recentTransactions')}</h2>
-            {transactions.length === 0 ? <p className="text-gray-400 text-center py-8">{t('dashboard.noTransactions')}</p> : (
+            {transactions.length === 0 ? <p className="text-gray-600 dark:text-gray-400 text-center py-8">{t('dashboard.noTransactions')}</p> : (
               <div className="space-y-3">
                 {transactions.map((tx) => (
                   <div key={tx.id} className="flex items-center justify-between p-4 bg-white/5 rounded-xl">
@@ -74,7 +74,7 @@ export default function Dashboard() {
                       <div className={`w-10 h-10 rounded-full flex items-center justify-center ${tx.type === 'tip_received' ? 'bg-green-400/20' : 'bg-fanzone-accent/20'}`}>
                         {tx.type === 'tip_received' ? <DollarSign className="w-5 h-5 text-green-400" /> : <Heart className="w-5 h-5 text-fanzone-accent" />}
                       </div>
-                      <div><p className="font-medium text-sm">{tx.description}</p><p className="text-xs text-gray-400">{new Date(tx.created_at).toLocaleDateString('fr-FR')}</p></div>
+                      <div><p className="font-medium text-sm">{tx.description}</p><p className="text-xs text-gray-600 dark:text-gray-400">{new Date(tx.created_at).toLocaleDateString('fr-FR')}</p></div>
                     </div>
                     <span className={`font-semibold ${tx.type === 'tip_received' ? 'text-green-400' : 'text-fanzone-accent'}`}>{tx.type === 'tip_received' ? '+' : '-'}{tx.amount.toFixed(2)}</span>
                   </div>
@@ -89,13 +89,13 @@ export default function Dashboard() {
             {(user as any)?.stripe_onboarding_complete ? (
               <div className="flex items-center gap-3 p-4 bg-green-400/10 rounded-xl border border-green-400/20">
                 <div className="w-3 h-3 rounded-full bg-green-400" />
-                <div><p className="text-sm font-medium text-green-400">{t('dashboard.connected')}</p><p className="text-xs text-gray-400">{t('dashboard.canReceivePayments')}</p></div>
+                <div><p className="text-sm font-medium text-green-400">{t('dashboard.connected')}</p><p className="text-xs text-gray-600 dark:text-gray-400">{t('dashboard.canReceivePayments')}</p></div>
               </div>
             ) : (
               <div className="space-y-4">
                 <div className="flex items-center gap-3 p-4 bg-yellow-400/10 rounded-xl border border-yellow-400/20">
                   <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <div><p className="text-sm font-medium text-yellow-400">{t('dashboard.pending')}</p><p className="text-xs text-gray-400">{t('dashboard.completeStripeOnboarding')}</p></div>
+                  <div><p className="text-sm font-medium text-yellow-400">{t('dashboard.pending')}</p><p className="text-xs text-gray-600 dark:text-gray-400">{t('dashboard.completeStripeOnboarding')}</p></div>
                 </div>
                 <button className="w-full btn-primary text-sm">{t('dashboard.connectStripe')}</button>
               </div>
@@ -108,7 +108,7 @@ export default function Dashboard() {
               {[1, 2, 3].map((i) => (
                 <div key={i} className="flex items-center gap-3">
                   <div className="w-8 h-8 rounded-full bg-gradient-to-br from-fanzone-accent to-fanzone-purple flex items-center justify-center text-sm font-bold">{i}</div>
-                  <div className="flex-1"><p className="text-sm font-medium">{t('dashboard.anonymousFan')}</p><p className="text-xs text-gray-400">{50 - i * 10} {t('dashboard.tipsAmount')}</p></div>
+                  <div className="flex-1"><p className="text-sm font-medium">{t('dashboard.anonymousFan')}</p><p className="text-xs text-gray-600 dark:text-gray-400">{50 - i * 10} {t('dashboard.tipsAmount')}</p></div>
                 </div>
               ))}
             </div>

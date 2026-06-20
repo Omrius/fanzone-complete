@@ -107,7 +107,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-10"
+            className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-10"
           >
             {t('home.hero.subtitle')}
           </motion.p>
@@ -133,7 +133,7 @@ export default function Home() {
             className="flex justify-center"
           >
             <motion.div animate={{ y: [0, 10, 0] }} transition={{ repeat: Infinity, duration: 2 }}>
-              <ArrowDown className="w-6 h-6 text-gray-400" />
+              <ArrowDown className="w-6 h-6 text-gray-600 dark:text-gray-400" />
             </motion.div>
           </motion.div>
         </motion.div>
@@ -150,7 +150,7 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home.categories.title')}</h2>
-            <p className="text-gray-400 text-lg">{t('home.categories.subtitle')}</p>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">{t('home.categories.subtitle')}</p>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
@@ -170,7 +170,7 @@ export default function Home() {
                   <cat.icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="font-semibold mb-1">{cat.label}</h3>
-                <p className="text-xs text-gray-400">{t('home.stats.events')} {cat.label.toLowerCase()}</p>
+                <p className="text-xs text-gray-600 dark:text-gray-400">{t('home.stats.events')} {cat.label.toLowerCase()}</p>
               </motion.button>
             ))}
           </div>
@@ -213,14 +213,14 @@ export default function Home() {
                       </div>
                       <div className="p-4">
                         <h3 className="font-semibold mb-1 line-clamp-1">{event.title}</h3>
-                        <div className="flex items-center gap-1 text-xs text-gray-400 mb-2">
+                        <div className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-400 mb-2">
                           <MapPin className="w-3 h-3" /> {event.city}, {event.country}
                         </div>
                         <div className="flex items-center justify-between text-sm">
                           <span className="text-fanzone-accent font-semibold">
                             {event.ticket_price > 0 ? `${event.ticket_price} ${t('common.currency')}` : t('events.free')}
                           </span>
-                          <span className="text-gray-400 text-xs">{new Date(event.event_date).toLocaleDateString('fr-FR')}</span>
+                          <span className="text-gray-600 dark:text-gray-400 text-xs">{new Date(event.event_date).toLocaleDateString('fr-FR')}</span>
                         </div>
                       </div>
                     </Link>
@@ -230,8 +230,8 @@ export default function Home() {
             ) : (
               <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
                 <Calendar className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                <p className="text-gray-400 text-lg">{t('home.emptyEvents')}</p>
-                <p className="text-gray-500 text-sm mt-2">{t('home.emptyEventsSubtitle')}</p>
+                <p className="text-gray-600 dark:text-gray-400 text-lg">{t('home.emptyEvents')}</p>
+                <p className="text-gray-600 dark:text-gray-500 text-sm mt-2">{t('home.emptyEventsSubtitle')}</p>
               </motion.div>
             )}
           </AnimatePresence>
@@ -259,7 +259,7 @@ export default function Home() {
               >
                 <stat.icon className="w-8 h-8 text-fanzone-accent mx-auto mb-3" />
                 <div className="text-3xl font-bold gradient-text mb-1">{stat.value}</div>
-                <div className="text-sm text-gray-400">{stat.label}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
               </motion.div>
             ))}
           </div>
@@ -276,7 +276,7 @@ export default function Home() {
             className="text-center mb-12"
           >
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home.pricing.title')}</h2>
-            <p className="text-gray-400 text-lg">{t('home.pricing.subtitle')}</p>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">{t('home.pricing.subtitle')}</p>
           </motion.div>
 
           <div className="max-w-md mx-auto">
@@ -291,11 +291,11 @@ export default function Home() {
               <div className="relative">
                 <div className="text-center mb-6">
                   <h3 className="text-2xl font-bold mb-2">{t('home.pricing.planTitle')}</h3>
-                  <p className="text-gray-400 text-sm">{t('home.pricing.perEvent')}</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">{t('home.pricing.perEvent')}</p>
                 </div>
                 <div className="text-center mb-8">
                   <span className="text-5xl font-bold gradient-text">100</span>
-                  <span className="text-xl text-gray-400 ml-1">{t('common.currency')}</span>
+                  <span className="text-xl text-gray-600 dark:text-gray-400 ml-1">{t('common.currency')}</span>
                 </div>
                 <ul className="space-y-3 mb-8">
                   {(t('home.pricing.features', { returnObjects: true }) as string[]).map((feature) => (
@@ -322,7 +322,7 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 className="text-4xl font-bold mb-6">{t('home.cta.title')}</h2>
-            <p className="text-xl text-gray-400 mb-8">{t('home.cta.subtitle')}</p>
+            <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">{t('home.cta.subtitle')}</p>
             <Link to="/events" className="btn-primary text-lg inline-flex items-center gap-2 px-8 py-4">
               <Zap className="w-5 h-5" /> {t('home.cta.button')}
             </Link>

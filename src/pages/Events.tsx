@@ -60,7 +60,7 @@ export default function Events() {
     <div className="max-w-7xl mx-auto px-4 py-8">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
         <h1 className="text-3xl md:text-4xl font-bold mb-2">{t('events.title')}</h1>
-        <p className="text-gray-400">{t('events.subtitle')} ({userCountry}) — {totalCount} {t('events.found')}</p>
+        <p className="text-gray-600 dark:text-gray-400">{t('events.subtitle')} ({userCountry}) — {totalCount} {t('events.found')}</p>
       </motion.div>
 
       <div className="flex flex-col md:flex-row gap-4 mb-8">
@@ -73,7 +73,7 @@ export default function Events() {
       <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8">
         {CATEGORIES.map((cat) => (
           <button key={cat.id} onClick={() => setSelectedCategory(cat.id)}
-            className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${selectedCategory === cat.id ? 'bg-fanzone-accent text-white' : 'bg-white/10 text-gray-400 hover:bg-white/20'}`}>
+            className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${selectedCategory === cat.id ? 'bg-fanzone-accent text-white' : 'bg-white/10 text-gray-600 dark:text-gray-400 hover:bg-white/20'}`}>
             {cat.id === 'all' ? t('events.all') : cat.label}
           </button>
         ))}
@@ -112,10 +112,10 @@ export default function Events() {
                   </div>
                   <div className="p-5">
                     <h3 className="font-semibold text-lg mb-2 line-clamp-1">{event.title}</h3>
-                    <div className="flex items-center gap-1 text-sm text-gray-400 mb-2">
+                    <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 mb-2">
                       <MapPin className="w-4 h-4" /> {event.city}, {event.country}
                     </div>
-                    <div className="flex items-center gap-1 text-sm text-gray-400 mb-3">
+                    <div className="flex items-center gap-1 text-sm text-gray-600 dark:text-gray-400 mb-3">
                       <Calendar className="w-4 h-4" /> {new Date(event.event_date).toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', hour: '2-digit', minute: '2-digit' })}
                     </div>
                     <div className="flex items-center justify-between">
@@ -134,7 +134,7 @@ export default function Events() {
         ) : (
           <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
             <Calendar className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <p className="text-gray-400 text-lg">{t('events.noEvents')}</p>
+            <p className="text-gray-600 dark:text-gray-400 text-lg">{t('events.noEvents')}</p>
             <p className="text-gray-500 text-sm mt-2">{t('events.noEventsSubtitle')}</p>
           </motion.div>
         )}

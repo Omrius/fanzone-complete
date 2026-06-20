@@ -94,7 +94,7 @@ export default function EventDetail() {
   if (!event) return (
     <div className="max-w-7xl mx-auto px-4 py-20 text-center">
       <Star className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-      <p className="text-gray-400 text-lg">{t('eventDetail.notFound')}</p>
+      <p className="text-gray-600 dark:text-gray-400 text-lg">{t('eventDetail.notFound')}</p>
       <Link to="/events" className="text-fanzone-accent mt-4 inline-block">{t('eventDetail.backToEvents')}</Link>
     </div>
   )
@@ -105,7 +105,7 @@ export default function EventDetail() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <Link to="/events" className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-6">
+        <Link to="/events" className="inline-flex items-center gap-2 text-gray-600 dark:text-gray-400 hover:text-white mb-6">
           <ArrowLeft className="w-4 h-4" /> {t('eventDetail.back')}
         </Link>
 
@@ -122,7 +122,7 @@ export default function EventDetail() {
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
               <div className="flex items-center gap-2 mb-3">
                 <span className="px-3 py-1 rounded-full bg-fanzone-accent text-sm font-semibold uppercase">{event.category}</span>
-                <span className={`px-3 py-1 rounded-full text-sm font-semibold ${event.status === 'upcoming' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-400'}`}>
+                <span className={`px-3 py-1 rounded-full text-sm font-semibold ${event.status === 'upcoming' ? 'bg-green-500/20 text-green-400' : 'bg-gray-500/20 text-gray-600 dark:text-gray-400'}`}>
                   {event.status}
                 </span>
               </div>
@@ -141,15 +141,15 @@ export default function EventDetail() {
             <div className="grid md:grid-cols-3 gap-6 mb-8">
               <div className="glass-card p-5 text-center">
                 <div className="text-3xl font-bold gradient-text mb-1">{event.ticket_price > 0 ? `${event.ticket_price} ${t('common.currency')}` : t('events.free')}</div>
-                <div className="text-sm text-gray-400">{t('eventDetail.ticketPrice')}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('eventDetail.ticketPrice')}</div>
               </div>
               <div className="glass-card p-5 text-center">
                 <div className="text-3xl font-bold gradient-text mb-1">{totalSupported.toFixed(0)} {t('common.currency')}</div>
-                <div className="text-sm text-gray-400">{t('eventDetail.supportsReceived')}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('eventDetail.supportsReceived')}</div>
               </div>
               <div className="glass-card p-5 text-center">
                 <div className="text-3xl font-bold gradient-text mb-1">{supports.length}</div>
-                <div className="text-sm text-gray-400">{t('eventDetail.contributors')}</div>
+                <div className="text-sm text-gray-600 dark:text-gray-400">{t('eventDetail.contributors')}</div>
               </div>
             </div>
 
@@ -157,10 +157,10 @@ export default function EventDetail() {
             <div className="grid md:grid-cols-2 gap-6 mb-8">
               <div className="glass-card p-6">
                 <h3 className="text-xl font-bold mb-2 flex items-center gap-2"><Heart className="w-5 h-5 text-fanzone-accent" /> {t('eventDetail.support.title')}</h3>
-                <p className="text-sm text-gray-400 mb-4">{t('eventDetail.support.description')}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{t('eventDetail.support.description')}</p>
                 <div className="flex items-center gap-3 mb-4">
                   <input type="number" min="5" value={supportAmount} onChange={(e) => setSupportAmount(Math.max(5, Number(e.target.value)))} className="input-field w-24 text-center" />
-                  <span className="text-gray-400">{t('common.currency')}</span>
+                  <span className="text-gray-600 dark:text-gray-400">{t('common.currency')}</span>
                 </div>
                 <button onClick={() => handlePayment('support', supportAmount)} disabled={isProcessing} className="w-full btn-primary disabled:opacity-50">
                   {isProcessing ? t('createEvent.processing') : `${t('eventDetail.support.button')} (${supportAmount} ${t('common.currency')})`}
@@ -169,10 +169,10 @@ export default function EventDetail() {
 
               <div className="glass-card p-6">
                 <h3 className="text-xl font-bold mb-2 flex items-center gap-2"><Star className="w-5 h-5 text-fanzone-purple" /> {t('eventDetail.sponsor.title')}</h3>
-                <p className="text-sm text-gray-400 mb-4">{t('eventDetail.sponsor.description')}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">{t('eventDetail.sponsor.description')}</p>
                 <div className="flex items-center gap-3 mb-4">
                   <input type="number" min="50" value={sponsorAmount} onChange={(e) => setSponsorAmount(Math.max(50, Number(e.target.value)))} className="input-field w-24 text-center" />
-                  <span className="text-gray-400">{t('common.currency')}</span>
+                  <span className="text-gray-600 dark:text-gray-400">{t('common.currency')}</span>
                 </div>
                 <button onClick={() => handlePayment('sponsor', sponsorAmount)} disabled={isProcessing} className="w-full btn-primary bg-gradient-to-r from-fanzone-purple to-fanzone-blue disabled:opacity-50">
                   {isProcessing ? t('createEvent.processing') : `${t('eventDetail.sponsor.button')} (${sponsorAmount} ${t('common.currency')})`}
@@ -192,7 +192,7 @@ export default function EventDetail() {
                       </div>
                       <div className="flex-1">
                         <p className="text-sm font-medium">{s.user?.username || t('eventDetail.anonymous')}</p>
-                        <p className="text-xs text-gray-400">{s.type === 'sponsor' ? t('eventDetail.sponsor.title') : t('eventDetail.support.title')}</p>
+                        <p className="text-xs text-gray-600 dark:text-gray-400">{s.type === 'sponsor' ? t('eventDetail.sponsor.title') : t('eventDetail.support.title')}</p>
                       </div>
                       <span className="font-bold text-fanzone-accent">{s.amount} {t('common.currency')}</span>
                     </div>

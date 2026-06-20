@@ -38,7 +38,7 @@ export default function Auth() {
           <div className="text-center mb-8">
             <Zap className="w-12 h-12 text-fanzone-accent mx-auto mb-4" />
             <h1 className="text-2xl font-bold mb-2">{isSignUp ? t('auth.welcomeSignUp') : t('auth.welcomeSignIn')}</h1>
-            <p className="text-gray-400">{isSignUp ? t('auth.signUpSubtitle') : t('auth.signInSubtitle')}</p>
+            <p className="text-gray-600 dark:text-gray-400">{isSignUp ? t('auth.signUpSubtitle') : t('auth.signInSubtitle')}</p>
           </div>
 
           <div className="grid grid-cols-2 gap-3 mb-6">
@@ -48,7 +48,7 @@ export default function Auth() {
 
           <div className="relative mb-6">
             <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-white/10"></div></div>
-            <div className="relative flex justify-center text-sm"><span className="px-2 bg-fanzone-card text-gray-400">{t('auth.orWithEmail')}</span></div>
+            <div className="relative flex justify-center text-sm"><span className="px-2 bg-fanzone-card text-gray-600 dark:text-gray-400">{t('auth.orWithEmail')}</span></div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-4">
@@ -84,11 +84,11 @@ export default function Auth() {
                 <div className="grid grid-cols-2 gap-3">
                   <button type="button" onClick={() => setFormData({ ...formData, role: 'fan' })}
                     className={`p-3 rounded-xl border transition-all ${formData.role === 'fan' ? 'border-fanzone-accent bg-fanzone-accent/10' : 'border-white/10'}`}>
-                    <div className="text-lg mb-1">{t('auth.fan')}</div><div className="font-medium text-sm">{t('auth.fan')}</div><div className="text-xs text-gray-400">{t('auth.fanDescription')}</div>
+                    <div className="text-lg mb-1">{t('auth.fan')}</div><div className="font-medium text-sm">{t('auth.fan')}</div><div className="text-xs text-gray-600 dark:text-gray-400">{t('auth.fanDescription')}</div>
                   </button>
                   <button type="button" onClick={() => setFormData({ ...formData, role: 'creator' })}
                     className={`p-3 rounded-xl border transition-all ${formData.role === 'creator' ? 'border-fanzone-accent bg-fanzone-accent/10' : 'border-white/10'}`}>
-                    <div className="text-lg mb-1">{t('auth.creator')}</div><div className="font-medium text-sm">{t('auth.creator')}</div><div className="text-xs text-gray-400">{t('auth.creatorDescription')}</div>
+                    <div className="text-lg mb-1">{t('auth.creator')}</div><div className="font-medium text-sm">{t('auth.creator')}</div><div className="text-xs text-gray-600 dark:text-gray-400">{t('auth.creatorDescription')}</div>
                   </button>
                 </div>
               </div>
@@ -98,7 +98,7 @@ export default function Auth() {
             </button>
           </form>
 
-          <p className="text-center mt-6 text-sm text-gray-400">
+          <p className="text-center mt-6 text-sm text-gray-600 dark:text-gray-400">
             {isSignUp ? t('auth.hasAccount') : t('auth.noAccount')}{' '}
             <button onClick={() => setIsSignUp(!isSignUp)} className="text-fanzone-accent hover:underline font-medium">{isSignUp ? t('auth.signIn') : t('auth.signUp')}</button>
           </p>

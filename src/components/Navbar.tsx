@@ -38,7 +38,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link key={link.to} to={link.to}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${location.pathname === link.to ? 'bg-white/10 text-white' : 'text-gray-400 hover:text-white'}`}>
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${location.pathname === link.to ? 'bg-white/10 text-white' : 'text-gray-600 dark:text-gray-400 hover:text-white'}`}>
                 <link.icon className="w-4 h-4" />
                 <span className="text-sm font-medium">{link.label}</span>
               </Link>
@@ -49,7 +49,7 @@ export default function Navbar() {
             <LanguageSwitcher />
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-400 hover:text-white"
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-600 dark:text-gray-400 hover:text-white"
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -83,14 +83,14 @@ export default function Navbar() {
           <div className="px-4 py-3 space-y-1">
             {navLinks.map((link) => (
               <Link key={link.to} to={link.to} onClick={() => setIsMobileMenuOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg ${location.pathname === link.to ? 'bg-white/10 text-white' : 'text-gray-400'}`}>
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg ${location.pathname === link.to ? 'bg-white/10 text-white' : 'text-gray-600 dark:text-gray-400'}`}>
                 <link.icon className="w-5 h-5" />
                 <span className="font-medium">{link.label}</span>
               </Link>
             ))}
             <div className="px-4 py-3 flex items-center gap-3">
               <LanguageSwitcher />
-              <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-400">
+              <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-600 dark:text-gray-400">
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
             </div>
