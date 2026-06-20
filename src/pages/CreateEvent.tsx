@@ -27,7 +27,7 @@ const CATEGORIES = [
 
 export default function CreateEvent() {
   const navigate = useNavigate()
-  const { user, isAuthenticated } = useAuth()
+  const { user, isAuthenticated, isLoading } = useAuth()
   const { t } = useTranslation()
   const [step, setStep] = useState(1)
   const [isProcessing, setIsProcessing] = useState(false)
@@ -43,9 +43,11 @@ export default function CreateEvent() {
   })
 
   useEffect(() => {
+    // Wait for auth loading to complete before redirecting
+    if (isLoading) return
     if (!isAuthenticated) { navigate('/auth'); return }
     detectCountry()
-  }, [isAuthenticated])
+  }, [isAuthenticated, isLoading])
 
   async function detectCountry() {
     try {

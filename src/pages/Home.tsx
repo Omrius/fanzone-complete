@@ -11,6 +11,8 @@ import { supabase } from '../lib/supabase'
 import { useTranslation } from 'react-i18next'
 import type { Event } from '../types'
 
+import ScrollReveal from '../components/ScrollReveal'
+
 const EVENT_CATEGORIES = [
   { id: 'sport', label: 'Sport', icon: Trophy, color: 'from-orange-500 to-red-500', bg: 'bg-orange-500/20' },
   { id: 'concert', label: 'Concert', icon: Music, color: 'from-purple-500 to-pink-500', bg: 'bg-purple-500/20' },
@@ -175,15 +177,16 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className={`py-20 transition-colors duration-500 ${isDark ? 'bg-fanzone-card/30' : 'bg-gray-50'}`}>
+      <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center mb-12"
-          >
+          <ScrollReveal>
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-center mb-12"
+            >
             <h2 className={`text-3xl md:text-4xl font-bold mb-4 transition-colors duration-500 ${isDark ? 'text-white' : 'text-gray-900'}`}>
               {t('home.categories.title')}
             </h2>
@@ -284,12 +287,14 @@ export default function Home() {
               {t('home.allEvents')} <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Stats */}
-      <section className={`py-20 transition-colors duration-500 ${isDark ? '' : 'bg-white'}`}>
+      <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4">
+          <ScrollReveal>
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {stats.map((stat, i) => (
               <motion.div
@@ -306,12 +311,14 @@ export default function Home() {
               </motion.div>
             ))}
           </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* Pricing for organizers */}
-      <section className={`py-20 transition-colors duration-500 ${isDark ? 'bg-gradient-to-br from-fanzone-accent/5 to-fanzone-purple/5' : 'bg-gradient-to-br from-fanzone-accent/5 to-fanzone-purple/5'}`}>
+      <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4">
+          <ScrollReveal>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -357,12 +364,14 @@ export default function Home() {
               </div>
             </motion.div>
           </div>
+          </ScrollReveal>
         </div>
       </section>
 
       {/* CTA */}
-      <section className={`py-20 transition-colors duration-500 ${isDark ? '' : 'bg-gray-50'}`}>
+      <section className="py-20 relative">
         <div className="max-w-3xl mx-auto px-4 text-center">
+          <ScrollReveal>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -374,6 +383,7 @@ export default function Home() {
               <Zap className="w-5 h-5" /> {t('home.cta.button')}
             </Link>
           </motion.div>
+          </ScrollReveal>
         </div>
       </section>
     </div>
