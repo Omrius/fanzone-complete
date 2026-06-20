@@ -3,7 +3,6 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { motion } from 'framer-motion'
-import { loadStripe } from '@stripe/stripe-js'
 import { useTranslation } from 'react-i18next'
 import {
   Calendar, MapPin, Users, Heart, Star, ArrowLeft,
@@ -16,8 +15,7 @@ const CATEGORY_ICONS: Record<string, any> = {
   art: Palette, culture: Globe, food: Utensils, business: Briefcase, other: Star,
 }
 
-const STRIPE_PK = (import.meta as any).env.VITE_STRIPE_PUBLISHABLE_KEY || ''
-const EDGE_URL = 'https://ibiuhcjzygitsqsjedgm.supabase.co/functions/v1/stripe-payment'
+const EDGE_URL = 'https://ibiuhcjzygitsqsjedgm.supabase.co/functions/v1/stripe-checkout'
 
 export default function EventDetail() {
   const { id } = useParams()
@@ -67,31 +65,21 @@ export default function EventDetail() {
           event_id: id,
           user_id: user.id,
           type,
+          title: event?.title || 'FANZONE Support',
         }),
       })
-      const { client_secret, payment_intent_id, error } = await res.json()
-      if (error) throw new Error(error)
+      const data = await res.json()
 
-      const stripe = await loadStripe(STRIPE_PK)
-      if (!stripe) throw new Error('Stripe not loaded')
+      if (data.error && data.error.includes('Stripe not configured')) {
+        alert('Stripe n\'est pas encore configure. Le paiement sera disponible prochainement.')
+        return
+      }
 
-      const { error: confirmError } = await stripe.confirmPayment({
-        clientSecret: client_secret,
-        confirmParams: { return_url: `${window.location.origin}/event/${id}` },
-      })
-      if (confirmError) throw new Error(confirmError.message)
+      if (data.error) throw new Error(data.error)
+      if (!data.url) throw new Error('No checkout URL returned')
 
-      await supabase.from('event_supports').insert({
-        event_id: id,
-        user_id: user.id,
-        amount: amountEUR,
-        type,
-        status: 'completed',
-        stripe_payment_intent_id: payment_intent_id,
-      })
-
-      alert(`${type === 'support' ? t('eventDetail.support.title') : t('eventDetail.sponsor.title')} ${t('common.confirm').toLowerCase()}`)
-      fetchEvent()
+      // Redirect to Stripe Checkout
+      window.location.href = data.url
     } catch (err: any) {
       alert(err.message || t('common.error'))
     } finally { setIsProcessing(false) }

@@ -1,4 +1,4 @@
-import { Zap, Heart } from 'lucide-react'
+import { Zap } from 'lucide-react'
 
 export default function Footer() {
   return (
@@ -10,7 +10,7 @@ export default function Footer() {
             <span className="font-bold gradient-text">FANZONE</span>
           </div>
           <p className="text-sm text-gray-400 flex items-center gap-1">
-            Fait avec <Heart className="w-4 h-4 text-fanzone-accent fill-fanzone-accent" /> pour les createurs
+            Made by <span className="font-semibold text-white">ITBABAR</span> company
           </p>
           <div className="flex gap-6 text-sm text-gray-400">
             <a href="#" className="hover:text-white transition-colors">Conditions</a>

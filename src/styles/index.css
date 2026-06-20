@@ -3,33 +3,47 @@
 @tailwind utilities;
 
 @layer base {
-  * { @apply border-gray-800; }
   body {
-    @apply bg-fanzone-dark text-white antialiased;
+    @apply bg-white text-gray-900 antialiased;
     font-family: 'Inter', system-ui, sans-serif;
+  }
+  .dark body {
+    @apply bg-fanzone-dark text-white;
   }
   ::selection { @apply bg-fanzone-accent/30; }
 }
 
 @layer components {
   .glass-card {
-    @apply bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl;
+    @apply bg-white/80 backdrop-blur-xl border border-gray-200 rounded-2xl shadow-lg;
+  }
+  .dark .glass-card {
+    @apply bg-white/5 border-white/10 shadow-none;
   }
   .gradient-text {
     @apply bg-gradient-to-r from-fanzone-accent via-fanzone-purple to-fanzone-blue bg-clip-text text-transparent;
   }
   .btn-primary {
-    @apply px-6 py-3 bg-gradient-to-r from-fanzone-accent to-fanzone-purple rounded-xl font-semibold hover:opacity-90 transition-all duration-300 shadow-lg shadow-fanzone-accent/25;
+    @apply px-6 py-3 bg-gradient-to-r from-fanzone-accent to-fanzone-purple rounded-xl font-semibold hover:opacity-90 transition-all duration-300 shadow-lg shadow-fanzone-accent/25 text-white;
   }
   .btn-secondary {
-    @apply px-6 py-3 bg-white/10 border border-white/20 rounded-xl font-semibold hover:bg-white/20 transition-all duration-300;
+    @apply px-6 py-3 bg-gray-100 border border-gray-300 rounded-xl font-semibold hover:bg-gray-200 transition-all duration-300 text-gray-800;
+  }
+  .dark .btn-secondary {
+    @apply bg-white/10 border-white/20 text-white hover:bg-white/20;
   }
   .input-field {
-    @apply w-full px-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:border-fanzone-accent/50 focus:ring-2 focus:ring-fanzone-accent/20 transition-all duration-300 placeholder:text-gray-500;
+    @apply w-full px-4 py-3 bg-white border border-gray-300 rounded-xl focus:outline-none focus:border-fanzone-accent/50 focus:ring-2 focus:ring-fanzone-accent/20 transition-all duration-300 placeholder:text-gray-400 text-gray-900;
+  }
+  .dark .input-field {
+    @apply bg-white/5 border-white/10 text-white placeholder:text-gray-500;
   }
 }
 
 ::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { @apply bg-fanzone-dark; }
-::-webkit-scrollbar-thumb { @apply bg-white/20 rounded-full; }
-::-webkit-scrollbar-thumb:hover { @apply bg-white/30; }
+::-webkit-scrollbar-track { @apply bg-white; }
+.dark ::-webkit-scrollbar-track { @apply bg-fanzone-dark; }
+::-webkit-scrollbar-thumb { @apply bg-gray-300 rounded-full; }
+.dark ::-webkit-scrollbar-thumb { @apply bg-white/20; }
+::-webkit-scrollbar-thumb:hover { @apply bg-gray-400; }
+.dark ::-webkit-scrollbar-thumb:hover { @apply bg-white/30; }

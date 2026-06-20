@@ -2,12 +2,14 @@ import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 import { useAuth } from '../contexts/AuthContext'
+import { useTheme } from '../contexts/ThemeContext'
 import LanguageSwitcher from './LanguageSwitcher'
-import { Home, Compass, Calendar, User, LayoutDashboard, LogOut, LogIn, Menu, X, Zap } from 'lucide-react'
+import { Home, Compass, Calendar, User, LayoutDashboard, LogOut, LogIn, Menu, X, Zap, Sun, Moon } from 'lucide-react'
 
 export default function Navbar() {
   const { t } = useTranslation()
   const { user, isAuthenticated, signOut } = useAuth()
+  const { isDark, toggleTheme } = useTheme()
   const location = useLocation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
@@ -45,6 +47,13 @@ export default function Navbar() {
 
           <div className="hidden md:flex items-center gap-3">
             <LanguageSwitcher />
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-400 hover:text-white"
+              aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+            </button>
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
@@ -79,8 +88,11 @@ export default function Navbar() {
                 <span className="font-medium">{link.label}</span>
               </Link>
             ))}
-            <div className="px-4 py-3">
+            <div className="px-4 py-3 flex items-center gap-3">
               <LanguageSwitcher />
+              <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-400">
+                {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              </button>
             </div>
           </div>
         </div>
