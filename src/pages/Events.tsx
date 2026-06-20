@@ -73,7 +73,7 @@ export default function Events() {
       <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-8">
         {CATEGORIES.map((cat) => (
           <button key={cat.id} onClick={() => setSelectedCategory(cat.id)}
-            className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${selectedCategory === cat.id ? 'bg-fanzone-accent text-white' : 'bg-white/10 text-gray-600 dark:text-gray-400 hover:bg-white/20'}`}>
+            className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${selectedCategory === cat.id ? 'bg-fanzone-accent text-white' : 'bg-gray-100 dark:bg-white/10 text-gray-600 dark:text-gray-400 hover:bg-gray-200 dark:hover:bg-white/20'}`}>
             {cat.id === 'all' ? t('events.all') : cat.label}
           </button>
         ))}
@@ -84,11 +84,11 @@ export default function Events() {
           <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[...Array(6)].map((_, i) => (
               <div key={i} className="glass-card p-0 animate-pulse overflow-hidden">
-                <div className="h-48 bg-white/10" />
+                <div className="h-48 bg-gray-200 dark:bg-white/10" />
                 <div className="p-4 space-y-2">
-                  <div className="h-5 bg-white/10 rounded w-3/4" />
-                  <div className="h-3 bg-white/10 rounded w-1/2" />
-                  <div className="h-3 bg-white/10 rounded w-2/3" />
+                  <div className="h-5 bg-gray-200 dark:bg-white/10 rounded w-3/4" />
+                  <div className="h-3 bg-gray-200 dark:bg-white/10 rounded w-1/2" />
+                  <div className="h-3 bg-gray-200 dark:bg-white/10 rounded w-2/3" />
                 </div>
               </div>
             ))}

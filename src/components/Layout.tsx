@@ -4,7 +4,7 @@ import Footer from './Footer'
 
 export default function Layout({ children }: { children?: React.ReactNode }) {
   return (
-    <div className="min-h-screen bg-fanzone-dark text-white">
+    <div className="min-h-screen bg-white text-gray-900 dark:bg-fanzone-dark dark:text-white">
       <Navbar />
       <main className="pt-16">{children || <Outlet />}</main>
       <Footer />

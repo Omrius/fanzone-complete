@@ -80,7 +80,7 @@ export default function Home() {
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-40">
           <source src={HERO_VIDEO} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-fanzone-dark/60 via-fanzone-dark/80 to-fanzone-dark" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black dark:from-fanzone-dark/60 dark:via-fanzone-dark/80 dark:to-fanzone-dark" />
         <div className="absolute inset-0 bg-gradient-to-r from-fanzone-accent/10 via-transparent to-fanzone-purple/10" />
 
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="relative z-10 max-w-7xl mx-auto px-4 text-center pt-20">
@@ -140,7 +140,7 @@ export default function Home() {
       </section>
 
       {/* Categories */}
-      <section className="py-20 bg-fanzone-card/30">
+      <section className="py-20 bg-gray-100 dark:bg-fanzone-card/30">
         <div className="max-w-7xl mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -181,10 +181,10 @@ export default function Home() {
               <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[...Array(4)].map((_, i) => (
                   <div key={i} className="glass-card p-0 animate-pulse overflow-hidden">
-                    <div className="h-40 bg-white/10" />
+                    <div className="h-40 bg-gray-200 dark:bg-white/10" />
                     <div className="p-4 space-y-2">
-                      <div className="h-5 bg-white/10 rounded w-3/4" />
-                      <div className="h-3 bg-white/10 rounded w-1/2" />
+                      <div className="h-5 bg-gray-200 dark:bg-white/10 rounded w-3/4" />
+                      <div className="h-3 bg-gray-200 dark:bg-white/10 rounded w-1/2" />
                     </div>
                   </div>
                 ))}

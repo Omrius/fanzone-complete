@@ -27,7 +27,7 @@ export default function Navbar() {
   }
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-fanzone-dark/80 backdrop-blur-xl border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-fanzone-dark/80 backdrop-blur-xl border-b border-gray-200 dark:border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link to="/" className="flex items-center gap-2">
@@ -38,7 +38,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link key={link.to} to={link.to}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${location.pathname === link.to ? 'bg-white/10 text-white' : 'text-gray-600 dark:text-gray-400 hover:text-white'}`}>
+                className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-all ${location.pathname === link.to ? 'bg-gray-200 text-gray-900 dark:bg-white/10 dark:text-white' : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'}`}>
                 <link.icon className="w-4 h-4" />
                 <span className="text-sm font-medium">{link.label}</span>
               </Link>
@@ -49,7 +49,7 @@ export default function Navbar() {
             <LanguageSwitcher />
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-600 dark:text-gray-400 hover:text-white"
+              className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-gray-400"
               aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
@@ -58,10 +58,10 @@ export default function Navbar() {
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
                   <img src={user?.avatar_url || `https://api.dicebear.com/7.x/avataaars/svg?seed=${user?.username}`}
-                    alt={user?.username} className="w-8 h-8 rounded-full bg-white/10" />
-                  <span className="text-sm font-medium">{user?.username}</span>
+                    alt={user?.username} className="w-8 h-8 rounded-full bg-gray-200 dark:bg-white/10" />
+                  <span className="text-sm font-medium text-gray-900 dark:text-white">{user?.username}</span>
                 </div>
-                <button onClick={signOut} className="p-2 rounded-lg hover:bg-white/10 transition-colors text-red-400">
+                <button onClick={signOut} className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-red-500 dark:text-red-400">
                   <LogOut className="w-5 h-5" />
                 </button>
               </div>
@@ -72,25 +72,25 @@ export default function Navbar() {
             )}
           </div>
 
-          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 rounded-lg hover:bg-white/10">
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10">
+            {isMobileMenuOpen ? <X className="w-6 h-6 text-gray-900 dark:text-white" /> : <Menu className="w-6 h-6 text-gray-900 dark:text-white" />}
           </button>
         </div>
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-fanzone-dark border-t border-white/10">
+        <div className="md:hidden bg-white dark:bg-fanzone-dark border-t border-gray-200 dark:border-white/10">
           <div className="px-4 py-3 space-y-1">
             {navLinks.map((link) => (
               <Link key={link.to} to={link.to} onClick={() => setIsMobileMenuOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 rounded-lg ${location.pathname === link.to ? 'bg-white/10 text-white' : 'text-gray-600 dark:text-gray-400'}`}>
+                className={`flex items-center gap-3 px-4 py-3 rounded-lg ${location.pathname === link.to ? 'bg-gray-200 text-gray-900 dark:bg-white/10 dark:text-white' : 'text-gray-600 dark:text-gray-400'}`}>
                 <link.icon className="w-5 h-5" />
                 <span className="font-medium">{link.label}</span>
               </Link>
             ))}
             <div className="px-4 py-3 flex items-center gap-3">
               <LanguageSwitcher />
-              <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-white/10 transition-colors text-gray-600 dark:text-gray-400">
+              <button onClick={toggleTheme} className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-white/10 transition-colors text-gray-600 dark:text-gray-400">
                 {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               </button>
             </div>
