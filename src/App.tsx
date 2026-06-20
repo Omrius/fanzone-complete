@@ -11,6 +11,8 @@ import CreatorProfile from './pages/CreatorProfile'
 import Dashboard from './pages/Dashboard'
 import Auth from './pages/Auth'
 import Settings from './pages/Settings'
+import PaymentSuccess from './pages/PaymentSuccess'
+import PaymentCancel from './pages/PaymentCancel'
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/payment-success" element={<PaymentSuccess />} />
+            <Route path="/payment-cancel" element={<PaymentCancel />} />
           </Routes>
         </Layout>
       </AuthProvider>
