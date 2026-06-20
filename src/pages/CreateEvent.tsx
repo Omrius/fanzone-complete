@@ -124,7 +124,9 @@ export default function CreateEvent() {
       }))
       window.location.href = data.url
     } catch (err: any) {
-      alert(err.message || t('common.error'))
+      // If Stripe Edge Function fails for any reason, fallback to direct creation
+      console.error('Stripe checkout failed:', err)
+      await createEventDirectly()
     } finally { setIsProcessing(false) }
   }
 
@@ -133,7 +135,7 @@ export default function CreateEvent() {
   return (
     <div className="max-w-3xl mx-auto px-4 py-8">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-        <button onClick={() => navigate('/events')} className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:text-gray-600 dark:text-gray-400 dark:hover:text-white mb-6">
+        <button onClick={() => navigate('/events')} className="inline-flex items-center gap-2 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white mb-6">
           <ArrowLeft className="w-4 h-4" /> {t('createEvent.back')}
         </button>
 
@@ -144,7 +146,7 @@ export default function CreateEvent() {
               <span className="text-sm font-medium">{t('createEvent.feeLabel')}: {ORGANIZER_FEE_EUR} {t('common.currency')}</span>
             </div>
             <h1 className="text-3xl font-bold mb-2">{t('createEvent.title')}</h1>
-            <p className="text-gray-500 dark:text-gray-600 dark:text-gray-400">{t('createEvent.subtitle')}</p>
+            <p className="text-gray-500 dark:text-gray-400">{t('createEvent.subtitle')}</p>
           </div>
 
           {/* Steps */}
@@ -210,7 +212,7 @@ export default function CreateEvent() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-semibold">{t('createEvent.feeAmount')}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-600 dark:text-gray-400">{t('createEvent.feeDescription')}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400">{t('createEvent.feeDescription')}</p>
                   </div>
                   <div className="text-2xl font-bold gradient-text">{ORGANIZER_FEE_EUR} {t('common.currency')}</div>
                 </div>
@@ -225,11 +227,11 @@ export default function CreateEvent() {
               <div className="glass-card p-6 bg-white/5">
                 <h3 className="font-bold mb-4">{t('createEvent.summary')}</h3>
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-between"><span className="text-gray-500 dark:text-gray-600 dark:text-gray-400">{t('createEvent.form.title')}</span><span>{form.title}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-500 dark:text-gray-600 dark:text-gray-400">{t('createEvent.form.category')}</span><span className="capitalize">{form.category}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-500 dark:text-gray-600 dark:text-gray-400">{t('createEvent.summaryDate')}</span><span>{new Date(form.event_date).toLocaleString('fr-FR')}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-500 dark:text-gray-600 dark:text-gray-400">{t('createEvent.summaryLocation')}</span><span>{form.city}, {userCountry}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-500 dark:text-gray-600 dark:text-gray-400">{t('createEvent.summaryTicket')}</span><span>{form.ticket_price > 0 ? `${form.ticket_price} ${t('common.currency')}` : t('events.free')}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500 dark:text-gray-400">{t('createEvent.form.title')}</span><span>{form.title}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500 dark:text-gray-400">{t('createEvent.form.category')}</span><span className="capitalize">{form.category}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500 dark:text-gray-400">{t('createEvent.summaryDate')}</span><span>{new Date(form.event_date).toLocaleString('fr-FR')}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500 dark:text-gray-400">{t('createEvent.summaryLocation')}</span><span>{form.city}, {userCountry}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-500 dark:text-gray-400">{t('createEvent.summaryTicket')}</span><span>{form.ticket_price > 0 ? `${form.ticket_price} ${t('common.currency')}` : t('events.free')}</span></div>
                   <div className="border-t border-gray-200 dark:border-white/10 pt-2 flex justify-between font-bold">
                     <span>{t('createEvent.feeAmount')}</span>
                     <span className="text-fanzone-accent">{ORGANIZER_FEE_EUR} {t('common.currency')}</span>
@@ -244,7 +246,7 @@ export default function CreateEvent() {
                 </button>
               </div>
 
-              <p className="text-xs text-gray-500 dark:text-gray-600 dark:text-gray-400 text-center">
+              <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
                 Si le paiement Stripe n'est pas disponible, l'evenement sera cree gratuitement et vous pourrez payer plus tard.
               </p>
             </div>

@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useRef } from 'react'
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion'
 import { useTheme } from '../contexts/ThemeContext'
 
@@ -15,6 +15,7 @@ export default function AnimatedBackground() {
   const springConfig = { stiffness: 100, damping: 30, restDelta: 0.001 }
   const y1Spring = useSpring(y1, springConfig)
   const y2Spring = useSpring(y2, springConfig)
+  const y3Spring = useSpring(y3, springConfig)
   const rotateSpring = useSpring(rotate, springConfig)
 
   return (
