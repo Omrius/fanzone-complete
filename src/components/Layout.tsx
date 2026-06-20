@@ -5,34 +5,43 @@ import Footer from './Footer'
 export default function Layout({ children }: { children?: React.ReactNode }) {
   return (
     <div className="min-h-screen relative">
-      {/* Floating orbs — visible behind content */}
+      {/* MASSIVE visible floating orbs — no subtlety */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        {/* Giant red orb top-left */}
         <div 
-          className="absolute -top-20 -left-20 w-[500px] h-[500px] rounded-full bg-red-500/40 dark:bg-red-500/30 blur-3xl animate-pulse"
-          style={{ animationDuration: '8s' }}
+          className="absolute -top-32 -left-32 w-[700px] h-[700px] bg-gradient-to-br from-red-500 to-pink-600 rounded-full opacity-60 dark:opacity-50 blur-[120px] animate-pulse"
+          style={{ animationDuration: '6s' }}
         />
+        {/* Giant purple orb top-right */}
         <div 
-          className="absolute top-40 -right-20 w-[600px] h-[600px] rounded-full bg-purple-500/40 dark:bg-purple-500/30 blur-3xl animate-pulse"
+          className="absolute -top-20 -right-20 w-[800px] h-[800px] bg-gradient-to-br from-purple-600 to-indigo-600 rounded-full opacity-50 dark:opacity-40 blur-[120px] animate-pulse"
+          style={{ animationDuration: '8s', animationDelay: '1s' }}
+        />
+        {/* Giant cyan orb bottom-left */}
+        <div 
+          className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-gradient-to-br from-cyan-400 to-teal-500 rounded-full opacity-50 dark:opacity-40 blur-[120px] animate-pulse"
           style={{ animationDuration: '10s', animationDelay: '2s' }}
         />
+        {/* Giant amber orb bottom-right */}
         <div 
-          className="absolute bottom-20 left-1/3 w-[400px] h-[400px] rounded-full bg-cyan-500/30 dark:bg-cyan-500/20 blur-3xl animate-pulse"
-          style={{ animationDuration: '12s', animationDelay: '4s' }}
+          className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-amber-400 to-orange-500 rounded-full opacity-40 dark:opacity-30 blur-[120px] animate-pulse"
+          style={{ animationDuration: '7s', animationDelay: '3s' }}
         />
+        {/* Center accent orb */}
         <div 
-          className="absolute top-1/2 left-1/2 w-[300px] h-[300px] rounded-full bg-amber-500/20 dark:bg-amber-500/15 blur-3xl animate-pulse"
-          style={{ animationDuration: '9s', animationDelay: '1s' }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-gradient-to-br from-fanzone-accent to-fanzone-purple rounded-full opacity-30 dark:opacity-25 blur-[100px] animate-pulse"
+          style={{ animationDuration: '5s', animationDelay: '0.5s' }}
         />
-        {/* Floating particles */}
-        {[...Array(30)].map((_, i) => (
+        {/* Floating dots */}
+        {[...Array(20)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 rounded-full bg-white/60 dark:bg-white/40 animate-ping"
+            className="absolute w-2 h-2 rounded-full bg-white/80 dark:bg-white/60 animate-ping"
             style={{
-              left: `${(i * 37 + 13) % 100}%`,
-              top: `${(i * 23 + 7) % 100}%`,
-              animationDuration: `${2 + (i % 4)}s`,
-              animationDelay: `${(i * 0.2) % 3}s`,
+              left: `${(i * 13 + 5) % 95}%`,
+              top: `${(i * 17 + 3) % 95}%`,
+              animationDuration: `${2 + (i % 3)}s`,
+              animationDelay: `${(i * 0.3) % 4}s`,
             }}
           />
         ))}
