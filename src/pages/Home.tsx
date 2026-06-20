@@ -24,9 +24,6 @@ const EVENT_CATEGORIES = [
   { id: 'business', label: 'Business', icon: Briefcase, color: 'from-indigo-500 to-blue-500', bg: 'bg-indigo-500/20' },
 ]
 
-const HERO_VIDEO_DARK = 'https://cdn.coverr.co/videos/coverr-neon-lights-in-the-city-4867/1080p.mp4'
-const HERO_VIDEO_LIGHT = 'https://cdn.coverr.co/videos/coverr-aerial-view-of-a-stadium-2512/1080p.mp4'
-
 export default function Home() {
   const { isAuthenticated } = useAuth()
   const { isDark } = useTheme()
@@ -78,28 +75,15 @@ export default function Home() {
     { label: t('home.stats.countries'), value: '25+', icon: Globe },
   ]
 
-  const heroVideo = isDark ? HERO_VIDEO_DARK : HERO_VIDEO_LIGHT
-
   return (
     <div ref={containerRef}>
-      {/* Hero avec video */}
+      {/* Hero */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <video 
-          key={heroVideo}
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
-          className="absolute inset-0 w-full h-full object-cover"
-        >
-          <source src={heroVideo} type="video/mp4" />
-        </video>
-        
-        {/* Overlay adapté au mode */}
+        {/* Subtle overlay to ensure text readability over the animated background */}
         <div className={`absolute inset-0 transition-colors duration-500 ${
           isDark 
-            ? 'bg-gradient-to-b from-black/60 via-black/80 to-fanzone-dark' 
-            : 'bg-gradient-to-b from-white/40 via-white/70 to-white'
+            ? 'bg-gradient-to-b from-black/30 via-black/20 to-transparent' 
+            : 'bg-gradient-to-b from-white/30 via-white/20 to-transparent'
         }`} />
         <div className={`absolute inset-0 transition-colors duration-500 ${
           isDark 
