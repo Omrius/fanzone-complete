@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { supabase } from '../lib/supabase'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Calendar, MapPin, Search, Filter, Trophy, Music, Mic, Gamepad2, Palette, Globe, Utensils, Briefcase } from 'lucide-react'
+import { useTranslation } from 'react-i18next'
 import type { Event } from '../types'
 
 const CATEGORIES = [
@@ -18,6 +19,7 @@ const CATEGORIES = [
 ]
 
 export default function Events() {
+  const { t } = useTranslation()
   const [events, setEvents] = useState<Event[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -57,14 +59,14 @@ export default function Events() {
   return (
     <div className="max-w-7xl mx-auto px-4 py-8">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold mb-2">Evenements</h1>
-        <p className="text-gray-400">Evenements dans votre pays ({userCountry}) — {totalCount} trouves</p>
+        <h1 className="text-3xl md:text-4xl font-bold mb-2">{t('events.title')}</h1>
+        <p className="text-gray-400">{t('events.subtitle')} ({userCountry}) — {totalCount} {t('events.found')}</p>
       </motion.div>
 
       <div className="flex flex-col md:flex-row gap-4 mb-8">
         <div className="relative flex-1">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
-          <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Rechercher un evenement..." className="input-field pl-10" />
+          <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder={t('events.searchPlaceholder')} className="input-field pl-10" />
         </div>
       </div>
 
@@ -72,7 +74,7 @@ export default function Events() {
         {CATEGORIES.map((cat) => (
           <button key={cat.id} onClick={() => setSelectedCategory(cat.id)}
             className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${selectedCategory === cat.id ? 'bg-fanzone-accent text-white' : 'bg-white/10 text-gray-400 hover:bg-white/20'}`}>
-            {cat.label}
+            {cat.id === 'all' ? t('events.all') : cat.label}
           </button>
         ))}
       </div>
@@ -118,10 +120,10 @@ export default function Events() {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-fanzone-accent font-bold text-lg">
-                        {event.ticket_price > 0 ? `${event.ticket_price} EUR` : 'Gratuit'}
+                        {event.ticket_price > 0 ? `${event.ticket_price} ${t('common.currency')}` : t('events.free')}
                       </span>
                       <span className="text-xs text-gray-500 px-2 py-1 rounded bg-white/5">
-                        {event.creator?.username || 'Organisateur'}
+                        {event.creator?.username || t('events.organizer')}
                       </span>
                     </div>
                   </div>
@@ -132,8 +134,8 @@ export default function Events() {
         ) : (
           <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20">
             <Calendar className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <p className="text-gray-400 text-lg">Aucun evenement trouve</p>
-            <p className="text-gray-500 text-sm mt-2">Essayez une autre categorie ou recherche</p>
+            <p className="text-gray-400 text-lg">{t('events.noEvents')}</p>
+            <p className="text-gray-500 text-sm mt-2">{t('events.noEventsSubtitle')}</p>
           </motion.div>
         )}
       </AnimatePresence>

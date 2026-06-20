@@ -1,23 +1,26 @@
 import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { useAuth } from '../contexts/AuthContext'
+import LanguageSwitcher from './LanguageSwitcher'
 import { Home, Compass, Calendar, User, LayoutDashboard, LogOut, LogIn, Menu, X, Zap } from 'lucide-react'
 
 export default function Navbar() {
+  const { t } = useTranslation()
   const { user, isAuthenticated, signOut } = useAuth()
   const location = useLocation()
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   const navLinks = [
-    { to: '/', icon: Home, label: 'Accueil' },
-    { to: '/events', icon: Calendar, label: 'Evenements' },
-    { to: '/explore', icon: Compass, label: 'Explorer' },
+    { to: '/', icon: Home, label: t('nav.home') },
+    { to: '/events', icon: Calendar, label: t('nav.events') },
+    { to: '/explore', icon: Compass, label: t('nav.explore') },
   ]
 
   if (isAuthenticated) {
     navLinks.push(
-      { to: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-      { to: '/settings', icon: User, label: 'Profil' }
+      { to: '/dashboard', icon: LayoutDashboard, label: t('nav.dashboard') },
+      { to: '/settings', icon: User, label: t('nav.profile') }
     )
   }
 
@@ -41,6 +44,7 @@ export default function Navbar() {
           </div>
 
           <div className="hidden md:flex items-center gap-3">
+            <LanguageSwitcher />
             {isAuthenticated ? (
               <div className="flex items-center gap-3">
                 <div className="flex items-center gap-2">
@@ -54,7 +58,7 @@ export default function Navbar() {
               </div>
             ) : (
               <Link to="/auth" className="btn-primary flex items-center gap-2 text-sm">
-                <LogIn className="w-4 h-4" />Connexion
+                <LogIn className="w-4 h-4" />{t('nav.login')}
               </Link>
             )}
           </div>
@@ -75,6 +79,9 @@ export default function Navbar() {
                 <span className="font-medium">{link.label}</span>
               </Link>
             ))}
+            <div className="px-4 py-3">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       )}

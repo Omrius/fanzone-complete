@@ -1,0 +1,179 @@
+{
+  "app": {
+    "name": "FANZONE"
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "events": "الفعاليات",
+    "explore": "استكشاف",
+    "dashboard": "لوحة التحكم",
+    "profile": "الملف الشخصي",
+    "logout": "تسجيل الخروج",
+    "login": "تسجيل الدخول",
+    "signup": "التسجيل",
+    "createEvent": "انشاء فعالية"
+  },
+  "home": {
+    "hero": {
+      "detectedCountry": "البلد المكتشف",
+      "title": "عيش الحدث الذي يحركك",
+      "subtitle": "FANZONE يربط المعجبين بفعالياتهم المفضلة. رياضة، حفلات، كاريوكي — اعثر على ما يجعلك تهتز.",
+      "exploreEvents": "استكشاف الفعاليات",
+      "becomeOrganizer": "كن منظماً"
+    },
+    "categories": {
+      "title": "اختر فئتك",
+      "subtitle": "فعاليات فريدة في بلدك"
+    },
+    "stats": {
+      "events": "فعاليات",
+      "fans": "معجبون نشطون",
+      "supports": "دعم",
+      "countries": "دول"
+    },
+    "pricing": {
+      "title": "نظم فعاليتك",
+      "subtitle": "انشر، شارك واجعل شغفك حياً",
+      "planTitle": "المنظم",
+      "perEvent": "لكل فعالية منظمة",
+      "features": [
+        "نشر غير محدود",
+        "دفع آمن Stripe",
+        "الظهور في بلدك",
+        "دعم و رعاية من المعجبين",
+        "تحليلات فورية"
+      ],
+      "cta": "انشاء فعالية"
+    },
+    "cta": {
+      "title": "مستعد لتجربة الحدث؟",
+      "subtitle": "انضم الى مجتمع FANZONE ولا تفوت أي فعالية.",
+      "button": "اكتشاف الفعاليات"
+    },
+    "emptyEvents": "لا توجد فعاليات في هذه الفئة حالياً",
+    "emptyEventsSubtitle": "كن اول من ينظم واحدة!",
+    "allEvents": "عرض جميع الفعاليات"
+  },
+  "events": {
+    "title": "الفعاليات",
+    "subtitle": "فعاليات في بلدك",
+    "searchPlaceholder": "البحث عن فعالية...",
+    "found": "موجودة",
+    "noEvents": "لم يتم العثور على فعاليات",
+    "noEventsSubtitle": "جرب فئة أو بحث آخر",
+    "free": "مجاني",
+    "organizer": "المنظم",
+    "all": "الكل"
+  },
+  "eventDetail": {
+    "back": "عودة",
+    "ticketPrice": "سعر التذكرة",
+    "supportsReceived": "الدعم المستلم",
+    "contributors": "المساهمون",
+    "support": {
+      "title": "دعم الفعالية",
+      "description": "ساهم في تمويل هذه الفعالية",
+      "button": "دعم"
+    },
+    "sponsor": {
+      "title": "رعاية",
+      "description": "كن راعياً لهذه الفعالية",
+      "button": "رعاية"
+    },
+    "recentSupports": "الدعم الأخير",
+    "anonymous": "مجهول",
+    "notFound": "الفعالية غير موجودة",
+    "backToEvents": "العودة للفعاليات"
+  },
+  "createEvent": {
+    "title": "انشاء فعالية",
+    "subtitle": "انشر فعاليتك ووصل الى جمهورك",
+    "feeLabel": "رسوم التنظيم",
+    "feeAmount": "رسوم التنظيم",
+    "feeDescription": "دفع لمرة واحدة لكل فعالية",
+    "step1": "تفاصيل",
+    "step2": "الدفع",
+    "form": {
+      "title": "عنوان الفعالية",
+      "titlePlaceholder": "فعاليتي الرائعة",
+      "description": "الوصف",
+      "descriptionPlaceholder": "صف فعاليتك...",
+      "category": "الفئة",
+      "date": "التاريخ والوقت",
+      "city": "المدينة",
+      "cityPlaceholder": "باريس",
+      "ticketPrice": "سعر التذكرة (يورو)",
+      "ticketPricePlaceholder": "0 = مجاني",
+      "coverImage": "صورة الغلاف"
+    },
+    "summary": "الملخص",
+    "payAndPublish": "دفع ونشر",
+    "back": "عودة",
+    "continue": "الاستمرار الى الدفع",
+    "processing": "جار المعالجة...",
+    "success": "تم انشاء الفعالية بنجاح!",
+    "summaryDate": "التاريخ",
+    "summaryLocation": "الموقع",
+    "summaryTicket": "التذكرة"
+  },
+  "auth": {
+    "signIn": "تسجيل الدخول",
+    "signUp": "التسجيل",
+    "email": "البريد الالكتروني",
+    "password": "كلمة المرور",
+    "username": "اسم المستخدم",
+    "role": "الدور",
+    "fan": "معجب",
+    "creator": "منشئ",
+    "noAccount": "ليس لديك حساب؟",
+    "hasAccount": "لديك حساب بالفعل؟",
+    "or": "أو",
+    "google": "Google",
+    "github": "GitHub",
+    "orWithEmail": "أو عبر البريد",
+    "iAmA": "أنا...",
+    "fanDescription": "دعم المنشئين",
+    "creatorDescription": "تحقيق الربح من المحتوى",
+    "signUpSuccess": "تم إنشاء الحساب! تحقق من بريدك.",
+    "welcomeSignIn": "مرحباً بك في FANZONE",
+    "welcomeSignUp": "انضم إلى FANZONE",
+    "signInSubtitle": "سجّل الدخول إلى حسابك",
+    "signUpSubtitle": "أنشئ حسابك وابدأ"
+  },
+  "common": {
+    "loading": "جار التحميل...",
+    "cancel": "الغاء",
+    "save": "حفظ",
+    "delete": "حذف",
+    "edit": "تعديل",
+    "close": "اغلاق",
+    "confirm": "تأكيد",
+    "euro": "يورو",
+    "currency": "يورو",
+    "error": "حدث خطأ"
+  },
+  "dashboard": {
+    "title": "لوحة تحكم المنشئ",
+    "subtitle": "تتبع أدائك وإدارة محتواك",
+    "totalEarnings": "الأرباح الكلية",
+    "thisMonth": "هذا الشهر",
+    "tipsReceived": "الإكراميات المستلمة",
+    "subscribers": "المشتركون",
+    "quickActions": "إجراءات سريعة",
+    "analytics": "التحليلات",
+    "payments": "المدفوعات",
+    "withdraw": "سحب",
+    "settings": "الإعدادات",
+    "recentTransactions": "المعاملات الأخيرة",
+    "noTransactions": "لا توجد معاملات بعد",
+    "stripePayments": "مدفوعات Stripe",
+    "connected": "متصل",
+    "canReceivePayments": "يمكنك استلام المدفوعات",
+    "pending": "معلق",
+    "completeStripeOnboarding": "أكمل إعداد Stripe",
+    "connectStripe": "ربط Stripe",
+    "topSupporters": "أفضل الداعمين",
+    "anonymousFan": "معجب مجهول",
+    "tipsAmount": "من الإكراميات"
+  }
+}

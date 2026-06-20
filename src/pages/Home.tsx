@@ -7,6 +7,7 @@ import {
   Palette, Utensils, Briefcase, Globe, Users, Heart, Star, ArrowDown
 } from 'lucide-react'
 import { supabase } from '../lib/supabase'
+import { useTranslation } from 'react-i18next'
 import type { Event } from '../types'
 
 const EVENT_CATEGORIES = [
@@ -24,6 +25,7 @@ const HERO_VIDEO = 'https://cdn.coverr.co/videos/coverr-neon-lights-in-the-city-
 
 export default function Home() {
   const { isAuthenticated } = useAuth()
+  const { t } = useTranslation()
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
   const [userCountry, setUserCountry] = useState('FR')
   const [events, setEvents] = useState<Event[]>([])
@@ -65,15 +67,15 @@ export default function Home() {
   }
 
   const stats = [
-    { label: 'Evenements', value: '1.2K+', icon: Calendar },
-    { label: 'Fans actifs', value: '50K+', icon: Users },
-    { label: 'Soutiens', value: '300K+', icon: Heart },
-    { label: 'Pays', value: '25+', icon: Globe },
+    { label: t('home.stats.events'), value: '1.2K+', icon: Calendar },
+    { label: t('home.stats.fans'), value: '50K+', icon: Users },
+    { label: t('home.stats.supports'), value: '300K+', icon: Heart },
+    { label: t('home.stats.countries'), value: '25+', icon: Globe },
   ]
 
   return (
     <div ref={containerRef}>
-      {/* Hero avec vidéo */}
+      {/* Hero avec video */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-40">
           <source src={HERO_VIDEO} type="video/mp4" />
@@ -89,7 +91,7 @@ export default function Home() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8"
           >
             <Zap className="w-4 h-4 text-fanzone-accent" />
-            <span className="text-sm font-medium">Votre pays detecte: {userCountry}</span>
+            <span className="text-sm font-medium">{t('home.hero.detectedCountry')}: {userCountry}</span>
           </motion.div>
 
           <motion.h1
@@ -98,8 +100,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
           >
-            Vivez l'evenement <br />
-            <span className="gradient-text">qui vous anime</span>
+            {t('home.hero.title')}
           </motion.h1>
 
           <motion.p
@@ -108,7 +109,7 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-10"
           >
-            FANZONE connecte les fans avec leurs evenements preferes. Sport, concert, karaoke — trouvez ce qui vous fait vibrer.
+            {t('home.hero.subtitle')}
           </motion.p>
 
           <motion.div
@@ -118,10 +119,10 @@ export default function Home() {
             className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
           >
             <Link to="/events" className="btn-primary text-lg flex items-center justify-center gap-2 px-8 py-4">
-              <Calendar className="w-5 h-5" /> Explorer les evenements <ChevronRight className="w-5 h-5" />
+              <Calendar className="w-5 h-5" /> {t('home.hero.exploreEvents')} <ChevronRight className="w-5 h-5" />
             </Link>
             {!isAuthenticated && (
-              <Link to="/auth" className="btn-secondary text-lg px-8 py-4">Devenir organisateur</Link>
+              <Link to="/auth" className="btn-secondary text-lg px-8 py-4">{t('home.hero.becomeOrganizer')}</Link>
             )}
           </motion.div>
 
@@ -148,8 +149,8 @@ export default function Home() {
             transition={{ duration: 0.6 }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Choisissez votre categorie</h2>
-            <p className="text-gray-400 text-lg">Des evenements uniques dans votre pays</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home.categories.title')}</h2>
+            <p className="text-gray-400 text-lg">{t('home.categories.subtitle')}</p>
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
@@ -169,7 +170,7 @@ export default function Home() {
                   <cat.icon className="w-7 h-7 text-white" />
                 </div>
                 <h3 className="font-semibold mb-1">{cat.label}</h3>
-                <p className="text-xs text-gray-400">Evenements {cat.label.toLowerCase()}</p>
+                <p className="text-xs text-gray-400">{t('home.stats.events')} {cat.label.toLowerCase()}</p>
               </motion.button>
             ))}
           </div>
@@ -217,7 +218,7 @@ export default function Home() {
                         </div>
                         <div className="flex items-center justify-between text-sm">
                           <span className="text-fanzone-accent font-semibold">
-                            {event.ticket_price > 0 ? `${event.ticket_price} EUR` : 'Gratuit'}
+                            {event.ticket_price > 0 ? `${event.ticket_price} ${t('common.currency')}` : t('events.free')}
                           </span>
                           <span className="text-gray-400 text-xs">{new Date(event.event_date).toLocaleDateString('fr-FR')}</span>
                         </div>
@@ -229,15 +230,15 @@ export default function Home() {
             ) : (
               <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-16">
                 <Calendar className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-                <p className="text-gray-400 text-lg">Aucun evenement dans cette categorie pour le moment</p>
-                <p className="text-gray-500 text-sm mt-2">Soyez le premier a en organiser un !</p>
+                <p className="text-gray-400 text-lg">{t('home.emptyEvents')}</p>
+                <p className="text-gray-500 text-sm mt-2">{t('home.emptyEventsSubtitle')}</p>
               </motion.div>
             )}
           </AnimatePresence>
 
           <div className="text-center mt-8">
             <Link to="/events" className="inline-flex items-center gap-2 text-fanzone-accent hover:underline font-medium">
-              Voir tous les evenements <ChevronRight className="w-4 h-4" />
+              {t('home.allEvents')} <ChevronRight className="w-4 h-4" />
             </Link>
           </div>
         </div>
@@ -274,8 +275,8 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Organisez votre evenement</h2>
-            <p className="text-gray-400 text-lg">Publiez, partagez et faites vivre votre passion</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t('home.pricing.title')}</h2>
+            <p className="text-gray-400 text-lg">{t('home.pricing.subtitle')}</p>
           </motion.div>
 
           <div className="max-w-md mx-auto">
@@ -289,22 +290,22 @@ export default function Home() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-fanzone-accent/20 to-fanzone-purple/20 rounded-full blur-3xl" />
               <div className="relative">
                 <div className="text-center mb-6">
-                  <h3 className="text-2xl font-bold mb-2">Organisateur</h3>
-                  <p className="text-gray-400 text-sm">Par evenement organise</p>
+                  <h3 className="text-2xl font-bold mb-2">{t('home.pricing.planTitle')}</h3>
+                  <p className="text-gray-400 text-sm">{t('home.pricing.perEvent')}</p>
                 </div>
                 <div className="text-center mb-8">
                   <span className="text-5xl font-bold gradient-text">100</span>
-                  <span className="text-xl text-gray-400 ml-1">EUR</span>
+                  <span className="text-xl text-gray-400 ml-1">{t('common.currency')}</span>
                 </div>
                 <ul className="space-y-3 mb-8">
-                  {['Publication illimitee', 'Paiement securise Stripe', 'Visibilite dans votre pays', 'Soutien & sponsoring par les fans', 'Analytics en temps reel'].map((feature) => (
+                  {(t('home.pricing.features', { returnObjects: true }) as string[]).map((feature) => (
                     <li key={feature} className="flex items-center gap-2 text-sm">
                       <Star className="w-4 h-4 text-fanzone-accent shrink-0" /> {feature}
                     </li>
                   ))}
                 </ul>
                 <Link to={isAuthenticated ? '/create-event' : '/auth'} className="w-full btn-primary text-center block py-4">
-                  {isAuthenticated ? 'Creer un evenement' : 'Se connecter pour organiser'}
+                  {isAuthenticated ? t('home.pricing.cta') : t('nav.login')}
                 </Link>
               </div>
             </motion.div>
@@ -320,10 +321,10 @@ export default function Home() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-6">Pret a vivre l'experience ?</h2>
-            <p className="text-xl text-gray-400 mb-8">Rejoignez la communaute FANZONE et ne manquez plus aucun evenement.</p>
+            <h2 className="text-4xl font-bold mb-6">{t('home.cta.title')}</h2>
+            <p className="text-xl text-gray-400 mb-8">{t('home.cta.subtitle')}</p>
             <Link to="/events" className="btn-primary text-lg inline-flex items-center gap-2 px-8 py-4">
-              <Zap className="w-5 h-5" /> Decouvrir les evenements
+              <Zap className="w-5 h-5" /> {t('home.cta.button')}
             </Link>
           </motion.div>
         </div>

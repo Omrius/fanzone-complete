@@ -4,6 +4,7 @@ import { supabase } from '../lib/supabase'
 import { useAuth } from '../contexts/AuthContext'
 import { motion } from 'framer-motion'
 import { loadStripe } from '@stripe/stripe-js'
+import { useTranslation } from 'react-i18next'
 import {
   Trophy, Music, Mic, Gamepad2,
   Palette, Globe, Utensils, Briefcase, ArrowLeft, Zap, Check
@@ -29,6 +30,7 @@ const CATEGORIES = [
 export default function CreateEvent() {
   const navigate = useNavigate()
   const { user, isAuthenticated } = useAuth()
+  const { t } = useTranslation()
   const [step, setStep] = useState(1)
   const [isProcessing, setIsProcessing] = useState(false)
   const [coverImage, setCoverImage] = useState('')
@@ -102,14 +104,14 @@ export default function CreateEvent() {
         user_id: user.id,
         type: 'event_organizer',
         amount: ORGANIZER_FEE_EUR,
-        description: `Frais organisation: ${form.title}`,
+        description: `${t('createEvent.feeAmount')}: ${form.title}`,
         status: 'completed',
       })
 
-      alert('Evenement cree avec succes !')
+      alert(t('createEvent.success'))
       navigate(`/event/${newEvent.id}`)
     } catch (err: any) {
-      alert(err.message || 'Erreur lors de la creation')
+      alert(err.message || t('common.error'))
     } finally { setIsProcessing(false) }
   }
 
@@ -119,17 +121,17 @@ export default function CreateEvent() {
     <div className="max-w-3xl mx-auto px-4 py-8">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <button onClick={() => navigate('/events')} className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-6">
-          <ArrowLeft className="w-4 h-4" /> Retour
+          <ArrowLeft className="w-4 h-4" /> {t('createEvent.back')}
         </button>
 
         <div className="glass-card p-8">
           <div className="text-center mb-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-fanzone-accent/10 border border-fanzone-accent/20 mb-4">
               <Zap className="w-4 h-4 text-fanzone-accent" />
-              <span className="text-sm font-medium">Frais d'organisation: {ORGANIZER_FEE_EUR} EUR</span>
+              <span className="text-sm font-medium">{t('createEvent.feeLabel')}: {ORGANIZER_FEE_EUR} {t('common.currency')}</span>
             </div>
-            <h1 className="text-3xl font-bold mb-2">Creer un evenement</h1>
-            <p className="text-gray-400">Publiez votre evenement et touchez votre audience</p>
+            <h1 className="text-3xl font-bold mb-2">{t('createEvent.title')}</h1>
+            <p className="text-gray-400">{t('createEvent.subtitle')}</p>
           </div>
 
           {/* Steps */}
@@ -139,7 +141,7 @@ export default function CreateEvent() {
                 <div className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold ${s === step ? 'bg-fanzone-accent text-white' : s < step ? 'bg-green-500 text-white' : 'bg-white/10'}`}>
                   {s < step ? <Check className="w-4 h-4" /> : s}
                 </div>
-                <span className="text-sm">{s === 1 ? 'Details' : 'Paiement'}</span>
+                <span className="text-sm">{s === 1 ? t('createEvent.step1') : t('createEvent.step2')}</span>
               </div>
             ))}
           </div>
@@ -147,17 +149,17 @@ export default function CreateEvent() {
           {step === 1 ? (
             <div className="space-y-6">
               <div>
-                <label className="block text-sm font-medium mb-2">Titre de l'evenement</label>
-                <input type="text" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="input-field" placeholder="Mon super evenement" required />
+                <label className="block text-sm font-medium mb-2">{t('createEvent.form.title')}</label>
+                <input type="text" value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })} className="input-field" placeholder={t('createEvent.form.titlePlaceholder')} required />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Description</label>
-                <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="input-field min-h-[120px]" placeholder="Decrivez votre evenement..." required />
+                <label className="block text-sm font-medium mb-2">{t('createEvent.form.description')}</label>
+                <textarea value={form.description} onChange={(e) => setForm({ ...form, description: e.target.value })} className="input-field min-h-[120px]" placeholder={t('createEvent.form.descriptionPlaceholder')} required />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Categorie</label>
+                <label className="block text-sm font-medium mb-2">{t('createEvent.form.category')}</label>
                 <div className="grid grid-cols-3 gap-3">
                   {CATEGORIES.map((cat) => (
                     <button key={cat.id} type="button" onClick={() => setForm({ ...form, category: cat.id })}
@@ -171,22 +173,22 @@ export default function CreateEvent() {
 
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Date et heure</label>
+                  <label className="block text-sm font-medium mb-2">{t('createEvent.form.date')}</label>
                   <input type="datetime-local" value={form.event_date} onChange={(e) => setForm({ ...form, event_date: e.target.value })} className="input-field" required />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Ville</label>
-                  <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} className="input-field" placeholder="Paris" required />
+                  <label className="block text-sm font-medium mb-2">{t('createEvent.form.city')}</label>
+                  <input type="text" value={form.city} onChange={(e) => setForm({ ...form, city: e.target.value })} className="input-field" placeholder={t('createEvent.form.cityPlaceholder')} required />
                 </div>
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Prix du billet (EUR)</label>
-                <input type="number" min="0" step="0.01" value={form.ticket_price} onChange={(e) => setForm({ ...form, ticket_price: Number(e.target.value) })} className="input-field" placeholder="0 = gratuit" />
+                <label className="block text-sm font-medium mb-2">{t('createEvent.form.ticketPrice')}</label>
+                <input type="number" min="0" step="0.01" value={form.ticket_price} onChange={(e) => setForm({ ...form, ticket_price: Number(e.target.value) })} className="input-field" placeholder={t('createEvent.form.ticketPricePlaceholder')} />
               </div>
 
               <div>
-                <label className="block text-sm font-medium mb-2">Image de couverture</label>
+                <label className="block text-sm font-medium mb-2">{t('createEvent.form.coverImage')}</label>
                 <CloudinaryUploader onUpload={(url) => setCoverImage(url)} uploadPreset="fanzone_unsigned" folder="fanzone/events" maxFiles={1} />
                 {coverImage && <img src={coverImage} alt="cover" className="mt-3 w-full h-40 object-cover rounded-xl" />}
               </div>
@@ -194,38 +196,38 @@ export default function CreateEvent() {
               <div className="glass-card p-4 bg-fanzone-accent/5 border-fanzone-accent/20">
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="font-semibold">Frais d'organisation</p>
-                    <p className="text-sm text-gray-400">Paiement unique par evenement</p>
+                    <p className="font-semibold">{t('createEvent.feeAmount')}</p>
+                    <p className="text-sm text-gray-400">{t('createEvent.feeDescription')}</p>
                   </div>
-                  <div className="text-2xl font-bold gradient-text">{ORGANIZER_FEE_EUR} EUR</div>
+                  <div className="text-2xl font-bold gradient-text">{ORGANIZER_FEE_EUR} {t('common.currency')}</div>
                 </div>
               </div>
 
               <button onClick={() => isStep1Valid && setStep(2)} disabled={!isStep1Valid} className="w-full btn-primary disabled:opacity-50 py-4">
-                Continuer vers le paiement
+                {t('createEvent.continue')}
               </button>
             </div>
           ) : (
             <div className="space-y-6">
               <div className="glass-card p-6 bg-white/5">
-                <h3 className="font-bold mb-4">Recapitulatif</h3>
+                <h3 className="font-bold mb-4">{t('createEvent.summary')}</h3>
                 <div className="space-y-2 text-sm">
-                  <div className="flex justify-between"><span className="text-gray-400">Titre</span><span>{form.title}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-400">Categorie</span><span className="capitalize">{form.category}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-400">Date</span><span>{new Date(form.event_date).toLocaleString('fr-FR')}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-400">Lieu</span><span>{form.city}, {userCountry}</span></div>
-                  <div className="flex justify-between"><span className="text-gray-400">Billet</span><span>{form.ticket_price > 0 ? `${form.ticket_price} EUR` : 'Gratuit'}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-400">{t('createEvent.form.title')}</span><span>{form.title}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-400">{t('createEvent.form.category')}</span><span className="capitalize">{form.category}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-400">{t('createEvent.summaryDate')}</span><span>{new Date(form.event_date).toLocaleString('fr-FR')}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-400">{t('createEvent.summaryLocation')}</span><span>{form.city}, {userCountry}</span></div>
+                  <div className="flex justify-between"><span className="text-gray-400">{t('createEvent.summaryTicket')}</span><span>{form.ticket_price > 0 ? `${form.ticket_price} ${t('common.currency')}` : t('events.free')}</span></div>
                   <div className="border-t border-white/10 pt-2 flex justify-between font-bold">
-                    <span>Frais d'organisation</span>
-                    <span className="text-fanzone-accent">{ORGANIZER_FEE_EUR} EUR</span>
+                    <span>{t('createEvent.feeAmount')}</span>
+                    <span className="text-fanzone-accent">{ORGANIZER_FEE_EUR} {t('common.currency')}</span>
                   </div>
                 </div>
               </div>
 
               <div className="flex gap-3">
-                <button onClick={() => setStep(1)} className="btn-secondary flex-1 py-4">Retour</button>
+                <button onClick={() => setStep(1)} className="btn-secondary flex-1 py-4">{t('createEvent.back')}</button>
                 <button onClick={handlePayAndCreate} disabled={isProcessing} className="btn-primary flex-1 py-4 disabled:opacity-50">
-                  {isProcessing ? 'Traitement...' : `Payer ${ORGANIZER_FEE_EUR} EUR et publier`}
+                  {isProcessing ? t('createEvent.processing') : `${t('createEvent.payAndPublish')} (${ORGANIZER_FEE_EUR} ${t('common.currency')})`}
                 </button>
               </div>
             </div>

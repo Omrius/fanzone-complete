@@ -1,0 +1,179 @@
+{
+  "app": {
+    "name": "FANZONE"
+  },
+  "nav": {
+    "home": "首页",
+    "events": "活动",
+    "explore": "探索",
+    "dashboard": "仪表盘",
+    "profile": "个人资料",
+    "logout": "退出",
+    "login": "登录",
+    "signup": "注册",
+    "createEvent": "创建活动"
+  },
+  "home": {
+    "hero": {
+      "detectedCountry": "检测到您的国家",
+      "title": "体验感动您的活动",
+      "subtitle": "FANZONE 连接粉丝与他们喜爱的活动。运动、音乐会、卡拉OK — 找到让您心动的事物。",
+      "exploreEvents": "探索活动",
+      "becomeOrganizer": "成为组织者"
+    },
+    "categories": {
+      "title": "选择您的类别",
+      "subtitle": "您国家独特的活动"
+    },
+    "stats": {
+      "events": "活动",
+      "fans": "活跃粉丝",
+      "supports": "支持",
+      "countries": "国家"
+    },
+    "pricing": {
+      "title": "组织您的活动",
+      "subtitle": "发布、分享并让您的激情焕发生机",
+      "planTitle": "组织者",
+      "perEvent": "每次组织活动",
+      "features": [
+        "无限发布",
+        "安全Stripe支付",
+        "在您国家可见",
+        "粉丝支持与赞助",
+        "实时分析"
+      ],
+      "cta": "创建活动"
+    },
+    "cta": {
+      "title": "准备好体验了吗？",
+      "subtitle": "加入FANZONE社区，不再错过任何活动。",
+      "button": "发现活动"
+    },
+    "emptyEvents": "此类别暂无活动",
+    "emptyEventsSubtitle": "成为第一个组织者！",
+    "allEvents": "查看所有活动"
+  },
+  "events": {
+    "title": "活动",
+    "subtitle": "您国家的活动",
+    "searchPlaceholder": "搜索活动...",
+    "found": "找到",
+    "noEvents": "未找到活动",
+    "noEventsSubtitle": "尝试其他类别或搜索",
+    "free": "免费",
+    "organizer": "组织者",
+    "all": "全部"
+  },
+  "eventDetail": {
+    "back": "返回",
+    "ticketPrice": "票价",
+    "supportsReceived": "收到的支持",
+    "contributors": "贡献者",
+    "support": {
+      "title": "支持活动",
+      "description": "为该活动提供资金支持",
+      "button": "支持"
+    },
+    "sponsor": {
+      "title": "赞助",
+      "description": "成为该活动的赞助商",
+      "button": "赞助"
+    },
+    "recentSupports": "近期支持",
+    "anonymous": "匿名",
+    "notFound": "活动未找到",
+    "backToEvents": "返回活动"
+  },
+  "createEvent": {
+    "title": "创建活动",
+    "subtitle": "发布您的活动并触达您的受众",
+    "feeLabel": "组织费用",
+    "feeAmount": "组织费用",
+    "feeDescription": "每次活动一次性支付",
+    "step1": "详情",
+    "step2": "支付",
+    "form": {
+      "title": "活动标题",
+      "titlePlaceholder": "我的精彩活动",
+      "description": "描述",
+      "descriptionPlaceholder": "描述您的活动...",
+      "category": "类别",
+      "date": "日期和时间",
+      "city": "城市",
+      "cityPlaceholder": "巴黎",
+      "ticketPrice": "票价 (欧元)",
+      "ticketPricePlaceholder": "0 = 免费",
+      "coverImage": "封面图片"
+    },
+    "summary": "摘要",
+    "payAndPublish": "支付并发布",
+    "back": "返回",
+    "continue": "继续支付",
+    "processing": "处理中...",
+    "success": "活动创建成功！",
+    "summaryDate": "日期",
+    "summaryLocation": "地点",
+    "summaryTicket": "门票"
+  },
+  "auth": {
+    "signIn": "登录",
+    "signUp": "注册",
+    "email": "邮箱",
+    "password": "密码",
+    "username": "用户名",
+    "role": "角色",
+    "fan": "粉丝",
+    "creator": "创作者",
+    "noAccount": "没有账户？",
+    "hasAccount": "已有账户？",
+    "or": "或",
+    "google": "谷歌",
+    "github": "GitHub",
+    "orWithEmail": "或使用邮箱",
+    "iAmA": "我是...",
+    "fanDescription": "支持创作者",
+    "creatorDescription": "内容变现",
+    "signUpSuccess": "账户创建成功！请检查您的邮箱。",
+    "welcomeSignIn": "欢迎使用 FANZONE",
+    "welcomeSignUp": "加入 FANZONE",
+    "signInSubtitle": "登录您的账户",
+    "signUpSubtitle": "创建账户并开始"
+  },
+  "common": {
+    "loading": "加载中...",
+    "cancel": "取消",
+    "save": "保存",
+    "delete": "删除",
+    "edit": "编辑",
+    "close": "关闭",
+    "confirm": "确认",
+    "euro": "欧元",
+    "currency": "欧元",
+    "error": "发生错误"
+  },
+  "dashboard": {
+    "title": "创作者仪表盘",
+    "subtitle": "跟踪您的表现并管理内容",
+    "totalEarnings": "总收益",
+    "thisMonth": "本月",
+    "tipsReceived": "收到的小费",
+    "subscribers": "订阅者",
+    "quickActions": "快捷操作",
+    "analytics": "分析",
+    "payments": "支付",
+    "withdraw": "提现",
+    "settings": "设置",
+    "recentTransactions": "最近交易",
+    "noTransactions": "暂无交易",
+    "stripePayments": "Stripe 支付",
+    "connected": "已连接",
+    "canReceivePayments": "您可以接收付款",
+    "pending": "待处理",
+    "completeStripeOnboarding": "完成 Stripe 入驻",
+    "connectStripe": "连接 Stripe",
+    "topSupporters": "顶级支持者",
+    "anonymousFan": "匿名粉丝",
+    "tipsAmount": "小费"
+  }
+}

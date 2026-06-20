@@ -4,6 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { Toaster } from 'react-hot-toast'
 import OneSignal from 'react-onesignal'
 import App from './App'
+import './i18n'
 import './styles/index.css'
 
 OneSignal.init({

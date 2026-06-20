@@ -1,0 +1,179 @@
+{
+  "app": {
+    "name": "FANZONE"
+  },
+  "nav": {
+    "home": "Inicio",
+    "events": "Eventos",
+    "explore": "Explorar",
+    "dashboard": "Dashboard",
+    "profile": "Perfil",
+    "logout": "Cerrar sesion",
+    "login": "Iniciar sesion",
+    "signup": "Registrarse",
+    "createEvent": "Crear evento"
+  },
+  "home": {
+    "hero": {
+      "detectedCountry": "Tu pais detectado",
+      "title": "Vive el evento que te mueve",
+      "subtitle": "FANZONE conecta a los fans con sus eventos favoritos. Deportes, conciertos, karaoke — encuentra lo que te hace vibrar.",
+      "exploreEvents": "Explorar eventos",
+      "becomeOrganizer": "Ser organizador"
+    },
+    "categories": {
+      "title": "Elige tu categoria",
+      "subtitle": "Eventos unicos en tu pais"
+    },
+    "stats": {
+      "events": "Eventos",
+      "fans": "Fans activos",
+      "supports": "Apoyos",
+      "countries": "Paises"
+    },
+    "pricing": {
+      "title": "Organiza tu evento",
+      "subtitle": "Publica, comparte y da vida a tu pasion",
+      "planTitle": "Organizador",
+      "perEvent": "Por evento organizado",
+      "features": [
+        "Publicacion ilimitada",
+        "Pago seguro Stripe",
+        "Visibilidad en tu pais",
+        "Apoyo y patrocinio de fans",
+        "Analiticas en tiempo real"
+      ],
+      "cta": "Crear evento"
+    },
+    "cta": {
+      "title": "Listo para vivir la experiencia?",
+      "subtitle": "Unete a la comunidad FANZONE y no te pierdas ningun evento.",
+      "button": "Descubrir eventos"
+    },
+    "emptyEvents": "No hay eventos en esta categoria",
+    "emptyEventsSubtitle": "Se el primero en organizar uno!",
+    "allEvents": "Ver todos los eventos"
+  },
+  "events": {
+    "title": "Eventos",
+    "subtitle": "Eventos en tu pais",
+    "searchPlaceholder": "Buscar un evento...",
+    "found": "encontrados",
+    "noEvents": "No se encontraron eventos",
+    "noEventsSubtitle": "Prueba otra categoria o busqueda",
+    "free": "Gratis",
+    "organizer": "Organizador",
+    "all": "Todos"
+  },
+  "eventDetail": {
+    "back": "Volver",
+    "ticketPrice": "Precio del boleto",
+    "supportsReceived": "Apoyos recibidos",
+    "contributors": "Contribuidores",
+    "support": {
+      "title": "Apoyar el evento",
+      "description": "Contribuye al financiamiento de este evento",
+      "button": "Apoyar"
+    },
+    "sponsor": {
+      "title": "Patrocinar",
+      "description": "Conviertete en patrocinador de este evento",
+      "button": "Patrocinar"
+    },
+    "recentSupports": "Apoyos recientes",
+    "anonymous": "Anonimo",
+    "notFound": "Evento no encontrado",
+    "backToEvents": "Volver a eventos"
+  },
+  "createEvent": {
+    "title": "Crear evento",
+    "subtitle": "Publica tu evento y llega a tu audiencia",
+    "feeLabel": "Cuota de organizacion",
+    "feeAmount": "Cuota de organizacion",
+    "feeDescription": "Pago unico por evento",
+    "step1": "Detalles",
+    "step2": "Pago",
+    "form": {
+      "title": "Titulo del evento",
+      "titlePlaceholder": "Mi super evento",
+      "description": "Descripcion",
+      "descriptionPlaceholder": "Describe tu evento...",
+      "category": "Categoria",
+      "date": "Fecha y hora",
+      "city": "Ciudad",
+      "cityPlaceholder": "Paris",
+      "ticketPrice": "Precio del boleto (EUR)",
+      "ticketPricePlaceholder": "0 = gratis",
+      "coverImage": "Imagen de portada"
+    },
+    "summary": "Resumen",
+    "payAndPublish": "Pagar y publicar",
+    "back": "Volver",
+    "continue": "Continuar al pago",
+    "processing": "Procesando...",
+    "success": "Evento creado con exito!",
+    "summaryDate": "Fecha",
+    "summaryLocation": "Ubicacion",
+    "summaryTicket": "Boleto"
+  },
+  "auth": {
+    "signIn": "Iniciar sesion",
+    "signUp": "Registrarse",
+    "email": "Email",
+    "password": "Contrasena",
+    "username": "Nombre de usuario",
+    "role": "Rol",
+    "fan": "Fan",
+    "creator": "Creador",
+    "noAccount": "No tienes cuenta?",
+    "hasAccount": "Ya tienes cuenta?",
+    "or": "o",
+    "google": "Google",
+    "github": "GitHub",
+    "orWithEmail": "o con email",
+    "iAmA": "Soy un...",
+    "fanDescription": "Apoyar creadores",
+    "creatorDescription": "Monetizar mi contenido",
+    "signUpSuccess": "Cuenta creada! Revisa tu email.",
+    "welcomeSignIn": "Bienvenido a FANZONE",
+    "welcomeSignUp": "Unete a FANZONE",
+    "signInSubtitle": "Inicia sesion en tu cuenta",
+    "signUpSubtitle": "Crea tu cuenta y comienza"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "close": "Cerrar",
+    "confirm": "Confirmar",
+    "euro": "EUR",
+    "currency": "EUR",
+    "error": "Ha ocurrido un error"
+  },
+  "dashboard": {
+    "title": "Dashboard de Creador",
+    "subtitle": "Sigues tu rendimiento y gestiona tu contenido",
+    "totalEarnings": "Ganancias Totales",
+    "thisMonth": "Este Mes",
+    "tipsReceived": "Propinas Recibidas",
+    "subscribers": "Suscriptores",
+    "quickActions": "Acciones Rapidas",
+    "analytics": "Analiticas",
+    "payments": "Pagos",
+    "withdraw": "Retirar",
+    "settings": "Ajustes",
+    "recentTransactions": "Transacciones Recientes",
+    "noTransactions": "Aun no hay transacciones",
+    "stripePayments": "Pagos Stripe",
+    "connected": "Conectado",
+    "canReceivePayments": "Puedes recibir pagos",
+    "pending": "Pendiente",
+    "completeStripeOnboarding": "Completa tu onboarding de Stripe",
+    "connectStripe": "Conectar Stripe",
+    "topSupporters": "Mejores Supporters",
+    "anonymousFan": "Fan Anonimo",
+    "tipsAmount": "en propinas"
+  }
+}
