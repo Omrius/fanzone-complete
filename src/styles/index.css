@@ -4,7 +4,7 @@
 
 /* Light & Dark mode variables */
 :root {
-  --bg-primary: #ffffff;
+  --bg-primary: transparent;
   --bg-secondary: #f8fafc;
   --bg-card: rgba(255,255,255,0.65);
   --text-primary: #0f172a;
@@ -17,7 +17,7 @@
 }
 
 .dark {
-  --bg-primary: #0f0f1a;
+  --bg-primary: transparent;
   --bg-secondary: #1a1a2e;
   --bg-card: rgba(255,255,255,0.05);
   --text-primary: #ffffff;
@@ -30,9 +30,15 @@
 }
 
 @layer base {
+  html {
+    background-color: #ffffff;
+  }
+  html.dark {
+    background-color: #0f0f1a;
+  }
   body {
     @apply antialiased;
-    background-color: var(--bg-primary);
+    background-color: transparent;
     color: var(--text-primary);
     font-family: 'Inter', system-ui, sans-serif;
     transition: background-color 0.5s ease, color 0.5s ease;
