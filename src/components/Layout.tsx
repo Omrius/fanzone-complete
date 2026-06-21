@@ -5,16 +5,17 @@ import Footer from './Footer'
 export default function Layout({ children }: { children?: React.ReactNode }) {
   return (
     <div className="min-h-screen relative">
-      {/* Animated background orbs — z-index: 0, content is z-10 */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
+      {/* DEBUG: visible border + label to verify rendering */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0, border: '4px solid lime' }}>
+        <div className="absolute top-2 left-2 text-xs font-bold text-lime-500 bg-black/80 px-2 py-1 rounded">ORBES</div>
         {/* Red orb top-left */}
         <div
           className="absolute rounded-full animate-pulse"
           style={{
-            top: '-150px', left: '-150px',
-            width: '700px', height: '700px',
-            background: 'radial-gradient(circle, rgba(239,68,68,0.8) 0%, rgba(236,72,153,0.6) 50%, transparent 70%)',
-            filter: 'blur(80px)',
+            top: '50px', left: '50px',
+            width: '300px', height: '300px',
+            background: 'radial-gradient(circle, rgba(239,68,68,1) 0%, rgba(236,72,153,0.8) 40%, transparent 70%)',
+            filter: 'blur(40px)',
             animationDuration: '6s',
           }}
         />
@@ -22,10 +23,10 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
         <div
           className="absolute rounded-full animate-pulse"
           style={{
-            top: '-100px', right: '-100px',
-            width: '800px', height: '800px',
-            background: 'radial-gradient(circle, rgba(147,51,234,0.7) 0%, rgba(79,70,229,0.5) 50%, transparent 70%)',
-            filter: 'blur(80px)',
+            top: '50px', right: '50px',
+            width: '300px', height: '300px',
+            background: 'radial-gradient(circle, rgba(147,51,234,1) 0%, rgba(79,70,229,0.8) 40%, transparent 70%)',
+            filter: 'blur(40px)',
             animationDuration: '8s',
             animationDelay: '1s',
           }}
@@ -34,10 +35,10 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
         <div
           className="absolute rounded-full animate-pulse"
           style={{
-            bottom: '-100px', left: '-50px',
-            width: '600px', height: '600px',
-            background: 'radial-gradient(circle, rgba(34,211,238,0.7) 0%, rgba(20,184,166,0.5) 50%, transparent 70%)',
-            filter: 'blur(80px)',
+            bottom: '50px', left: '50px',
+            width: '300px', height: '300px',
+            background: 'radial-gradient(circle, rgba(34,211,238,1) 0%, rgba(20,184,166,0.8) 40%, transparent 70%)',
+            filter: 'blur(40px)',
             animationDuration: '10s',
             animationDelay: '2s',
           }}
@@ -46,25 +47,12 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
         <div
           className="absolute rounded-full animate-pulse"
           style={{
-            bottom: '-50px', right: '-50px',
-            width: '500px', height: '500px',
-            background: 'radial-gradient(circle, rgba(251,191,36,0.6) 0%, rgba(249,115,22,0.4) 50%, transparent 70%)',
-            filter: 'blur(80px)',
+            bottom: '50px', right: '50px',
+            width: '300px', height: '300px',
+            background: 'radial-gradient(circle, rgba(251,191,36,1) 0%, rgba(249,115,22,0.8) 40%, transparent 70%)',
+            filter: 'blur(40px)',
             animationDuration: '7s',
             animationDelay: '3s',
-          }}
-        />
-        {/* Center accent orb */}
-        <div
-          className="absolute rounded-full animate-pulse"
-          style={{
-            top: '50%', left: '50%',
-            transform: 'translate(-50%, -50%)',
-            width: '400px', height: '400px',
-            background: 'radial-gradient(circle, rgba(255,71,87,0.5) 0%, rgba(108,92,231,0.3) 50%, transparent 70%)',
-            filter: 'blur(60px)',
-            animationDuration: '5s',
-            animationDelay: '0.5s',
           }}
         />
         {/* Floating particles */}
@@ -75,8 +63,8 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
             style={{
               left: `${(i * 37 + 13) % 95}%`,
               top: `${(i * 23 + 7) % 95}%`,
-              width: '3px', height: '3px',
-              backgroundColor: 'rgba(255,255,255,0.9)',
+              width: '6px', height: '6px',
+              backgroundColor: 'rgba(0,255,0,1)',
               animationDuration: `${2 + (i % 3)}s`,
               animationDelay: `${(i * 0.3) % 4}s`,
             }}
