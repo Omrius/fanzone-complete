@@ -5,8 +5,8 @@ import Footer from './Footer'
 export default function Layout({ children }: { children?: React.ReactNode }) {
   return (
     <div className="min-h-screen relative">
-      {/* Animated background orbs — z-index: -1 to sit behind everything */}
-      <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: -1 }}>
+      {/* Animated background orbs — z-index: 0, content is z-10 */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 0 }}>
         {/* Red orb top-left */}
         <div
           className="absolute rounded-full animate-pulse"
@@ -83,7 +83,7 @@ export default function Layout({ children }: { children?: React.ReactNode }) {
           />
         ))}
       </div>
-      <div className="relative z-10 text-gray-900 dark:text-white">
+      <div className="relative text-gray-900 dark:text-white" style={{ zIndex: 10 }}>
         <Navbar />
         <main className="pt-16 min-h-screen">{children || <Outlet />}</main>
         <Footer />
