@@ -43,6 +43,9 @@
     font-family: 'Inter', system-ui, sans-serif;
     transition: background-color 0.5s ease, color 0.5s ease;
   }
+  #root {
+    background-color: transparent;
+  }
   ::selection { @apply bg-fanzone-accent/30; }
 }
 
