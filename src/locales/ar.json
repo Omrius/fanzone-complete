@@ -15,11 +15,34 @@
   },
   "home": {
     "hero": {
-      "detectedCountry": "البلد المكتشف",
+      "badge": "منصة فعاليات الجيل الجديد",
+      "detectedCountry": "فعاليات في بلدك",
       "title": "عيش الحدث الذي يحركك",
       "subtitle": "FANZONE يربط المعجبين بفعالياتهم المفضلة. رياضة، حفلات، كاريوكي — اعثر على ما يجعلك تهتز.",
       "exploreEvents": "استكشاف الفعاليات",
       "becomeOrganizer": "كن منظماً"
+    },
+    "howItWorks": {
+      "title": "كيف يعمل",
+      "subtitle": "ثلاث خطوات لتجربة FANZONE",
+      "discover": {
+        "title": "اكتشف",
+        "description": "تصفح الفعاليات حسب الفئة أو المدينة أو الشغف."
+      },
+      "book": {
+        "title": "احجز",
+        "description": "اشترِ تذكرتك ببضع نقرات عبر Stripe."
+      },
+      "support": {
+        "title": "ادعم",
+        "description": "ساهم في نجاح فعالياتك المفضلة."
+      }
+    },
+    "trust": {
+      "stripe": "دفع آمن Stripe",
+      "local": "فعاليات محلية",
+      "community": "مجتمع نشط",
+      "instant": "تأكيد فوري"
     },
     "categories": {
       "title": "اختر فئتك",

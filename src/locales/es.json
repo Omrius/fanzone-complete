@@ -15,11 +15,34 @@
   },
   "home": {
     "hero": {
-      "detectedCountry": "Tu pais detectado",
+      "badge": "Plataforma de eventos de nueva generacion",
+      "detectedCountry": "Eventos en tu pais",
       "title": "Vive el evento que te mueve",
       "subtitle": "FANZONE conecta a los fans con sus eventos favoritos. Deportes, conciertos, karaoke — encuentra lo que te hace vibrar.",
       "exploreEvents": "Explorar eventos",
       "becomeOrganizer": "Ser organizador"
+    },
+    "howItWorks": {
+      "title": "Como funciona",
+      "subtitle": "Tres pasos para vivir la experiencia FANZONE",
+      "discover": {
+        "title": "Descubre",
+        "description": "Explora eventos por categoria, ciudad o pasion."
+      },
+      "book": {
+        "title": "Reserva",
+        "description": "Compra tu entrada en pocos clics via Stripe."
+      },
+      "support": {
+        "title": "Apoya",
+        "description": "Contribuye al exito de tus eventos favoritos."
+      }
+    },
+    "trust": {
+      "stripe": "Pago seguro Stripe",
+      "local": "Eventos locales",
+      "community": "Comunidad activa",
+      "instant": "Confirmacion instantanea"
     },
     "categories": {
       "title": "Elige tu categoria",

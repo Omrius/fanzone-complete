@@ -15,11 +15,34 @@
   },
   "home": {
     "hero": {
-      "detectedCountry": "检测到您的国家",
+      "badge": "新一代活动平台",
+      "detectedCountry": "您国家的活动",
       "title": "体验感动您的活动",
       "subtitle": "FANZONE 连接粉丝与他们喜爱的活动。运动、音乐会、卡拉OK — 找到让您心动的事物。",
       "exploreEvents": "探索活动",
       "becomeOrganizer": "成为组织者"
+    },
+    "howItWorks": {
+      "title": "如何运作",
+      "subtitle": "三步体验 FANZONE",
+      "discover": {
+        "title": "发现",
+        "description": "按类别、城市或兴趣浏览活动。"
+      },
+      "book": {
+        "title": "预订",
+        "description": "通过 Stripe 几步即可购票。"
+      },
+      "support": {
+        "title": "支持",
+        "description": "为您喜爱的活动贡献力量。"
+      }
+    },
+    "trust": {
+      "stripe": "Stripe 安全支付",
+      "local": "本地活动",
+      "community": "活跃社区",
+      "instant": "即时确认"
     },
     "categories": {
       "title": "选择您的类别",
